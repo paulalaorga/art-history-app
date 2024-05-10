@@ -9,7 +9,7 @@
         <template v-slot:opposite>
         <div class="timeline-content">
           <span class="timeline-years">{{ item.years }}</span>
-          <span class="text-h6 timeline-period">{{ item.period }}</span>
+          <span :class="getFontClass(item.period)" class="timeline-period">{{ item.period }}</span>
         </div>
         </template>
       </v-timeline-item>
@@ -19,11 +19,10 @@
       <v-list-item
           v-for="item in items"
           :key="item.id"
+          class="timeline-content-list" @mouseover="showPeriod(item.id)" @mouseleave="hidePeriod"
       >
-        <v-list-item class="timeline-content">
           <span class="timeline-years">{{ item.years }}</span>
-          <span class="text-h6 timeline-period">{{ item.period }}</span>
-        </v-list-item>
+          <span :class="getFontClass(item.period)" v-if="visiblePeriod === item.id" class="timeline-period">{{ item.period }}</span>
       </v-list-item>
     </v-list>
   </div>
@@ -33,6 +32,7 @@
   export default {
     data: () => ({
       isSmallScreen: false,
+      visiblePeriod: null,
       items: [
         {
           id: 1,
@@ -81,12 +81,39 @@
   methods: {
     handleResize() {
       this.isSmallScreen = window.innerWidth < 600;
-    }
+    },
+    showPeriod(id) {
+      this.visiblePeriod = id;
+    },
+    hidePeriod() {
+      this.visiblePeriod = null;
+    },
+    getFontClass(period) {
+      if (period.includes("Ancient Rome")) return 'ancient-rome-font';
+      if (period.includes("Medieval Art")) return 'medieval-art-font';
+      if (period.includes("Renaissance Art")) return 'renaissance-art-font';
+      if (period.includes("Baroque Art")) return 'baroque-art-font';
+      if (period.includes("Romanticism")) return 'romanticism-font';
+      if (period.includes("Modern Art")) return 'modern-art-font';
+      if (period.includes("Contemporary Art")) return 'contemporary-art-font';
+      return ''; // default font class
+    }  
   }
-}
+  }
+
+
   </script>
   
   <style>
+
+.ancient-rome-font { font-family: 'Cinzel', serif; }
+.medieval-art-font { font-family: 'Macondo Swash Caps', cursive; }
+.renaissance-art-font { font-family: 'Monsieur La Doulaise'; font-weight: 400; font-style: normal; }
+.baroque-art-font { font-family: 'UnifrakturMaguntia', cursive; }
+.romanticism-font { font-family: 'Snell Roundhand', cursive; }
+.modern-art-font { font-family: 'Monoton'; }
+.contemporary-art-font { font-family: 'Silkscreen'; font-size: x-large; }
+
 .timeline-content {
   width: 500px; /* Adjust this value based on your layout needs */
   max-width: 100%;
@@ -108,5 +135,36 @@
 
 .timeline-period {
   color: #333; /* Slightly darker text for contrast */
+  font-size: x-large;
+}
+
+
+.timeline-content-list:hover .timeline-period {
+  display: block; /* Show on hover */
+}
+.timeline-content-list:hover .timeline-years {
+  display: none; /* Show on hover */
+}
+
+.timeline-content-list {
+  border: 1px solid #333;
+  padding: 10px;
+  margin-bottom: 10px;
+  background-color: #8B2727;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  
+}
+
+.timeline-content-list .timeline-years {
+  color: #fff; /* White text for better visibility */
+  font-size: large;
+}
+
+.timeline-content-list .timeline-period {
+  display: none; /* Hide by default */
+  color: #fff; /* White text for better visibility */
+  font-size: xxx-large;
 }
 </style>

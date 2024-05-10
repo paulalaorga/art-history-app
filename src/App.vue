@@ -1,12 +1,8 @@
 <template>
   <v-app>
-    <v-card :dark="isDarkTheme">
-      <v-card-title>
-        <HeaderComponent />
-      </v-card-title>
+    <v-card>
       <v-card-text>
-       
-        <h1>Welcome to Your Art History App</h1>
+        <h1>Art History App</h1>
         <PeriodList />
       </v-card-text>
       <v-card-actions>
@@ -17,7 +13,6 @@
 </template>
 
 <script>
-import HeaderComponent from '@/components/HeaderComponent.vue'
 import FooterComponent from '@/components/FooterComponent.vue'
 import PeriodList from './components/PeriodList.vue';
 
@@ -25,14 +20,8 @@ import PeriodList from './components/PeriodList.vue';
 export default {
   name: 'App',
   components: {
-    HeaderComponent,
     PeriodList,
     FooterComponent
-  },
-  data() {
-    return {
-      isDarkTheme: false
-    };
   },
 }
 </script>
