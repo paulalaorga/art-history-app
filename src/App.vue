@@ -1,14 +1,7 @@
 <template>
   <v-app>
-    <v-card>
-      <v-card-text>
-        <h1>Art History App</h1>
         <PeriodList />
-      </v-card-text>
-      <v-card-actions>
         <FooterComponent />
-      </v-card-actions>
-    </v-card>
   </v-app>
 </template>
 
@@ -32,7 +25,6 @@ export default {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-/*   color: #8B2727; */
   background-color: #ECEBDF;
   margin-top: 60px;
 } 
