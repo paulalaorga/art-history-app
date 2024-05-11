@@ -18,7 +18,7 @@ git add -A
 git commit -m 'deploy'
 
 # force push to the gh-pages branch
-git push -f git@github.com:paulalaorga/art-history-app.git main:deployment
+git push -f git@github.com:paulalaorga/art-history-app.git main:gh-pages
 
 # return to the previous directory
 cd -
