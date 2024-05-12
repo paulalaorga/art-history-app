@@ -1,8 +1,7 @@
 const { defineConfig } = require('@vue/cli-service');
 
-module.exports = defineConfig({
-  transpileDependencies: true,
+module.exports = {
   publicPath: process.env.NODE_ENV === 'production'
-    ? '/art-history-app/'
+    ? '/repository-name/'  // replace 'repository-name' with your GitHub repository name
     : '/'
-});
+}
