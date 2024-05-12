@@ -10,7 +10,7 @@ npm run build
 cd dist
 
 # setting a custom domain
-echo 'www.opus-app.com.au' > CNAME
+echo 'https://paulalaorga.github.io/art-history-app/' > CNAME
 
 # initialize a new git repository
 git init
