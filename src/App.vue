@@ -1,31 +1,27 @@
 <template>
   <v-app>
-        <PeriodList />
-        <FooterComponent />
+     <HeaderComponent />
   </v-app>
 </template>
 
 <script>
-import FooterComponent from '@/components/FooterComponent.vue'
-import PeriodList from './components/PeriodList.vue';
-
+import HeaderComponent from './components/HeaderComponent.vue';
 
 export default {
   name: 'App',
   components: {
-    PeriodList,
-    FooterComponent
+    HeaderComponent
   },
 }
 </script>
 
 <style>
-#app {
+/* #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   background-color: #ECEBDF;
   margin-top: 60px;
-} 
+}  */
 </style>
