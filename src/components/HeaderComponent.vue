@@ -1,95 +1,356 @@
 <template>
-  <div class="pageContainer">
+  <div class="macbook-air-light">
     <div class="header">
-      <svg width="621" height="329" viewBox="0 0 621 329" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <rect width="621" height="329" fill="#322C2C" />
-        <rect x="11.0005" y="12.3022" width="596.772" height="305.664" fill="#FFFAFA" />
-        <rect x="20.1674" y="21.7656" width="579.355" height="285.791" fill="#322C2C" />
-        <rect x="31" y="32" width="557" height="263" fill="#FFFAFA" />
-        <path
-          d="M76.125 66.5625L51.375 142H31.4375L65.25 51H77.9375L76.125 66.5625ZM96.6875 142L71.875 66.5625L69.875 51H82.6875L116.688 142H96.6875ZM95.5625 108.125V122.812H47.5V108.125H95.5625ZM128.965 51H162.902C169.861 51 175.84 52.0417 180.84 54.125C185.882 56.2083 189.757 59.2917 192.465 63.375C195.173 67.4583 196.527 72.4792 196.527 78.4375C196.527 83.3125 195.694 87.5 194.027 91C192.402 94.4583 190.09 97.3542 187.09 99.6875C184.132 101.979 180.652 103.812 176.652 105.188L170.715 108.312H141.215L141.09 93.6875H163.027C166.319 93.6875 169.048 93.1042 171.215 91.9375C173.382 90.7708 175.007 89.1458 176.09 87.0625C177.215 84.9792 177.777 82.5625 177.777 79.8125C177.777 76.8958 177.236 74.375 176.152 72.25C175.069 70.125 173.423 68.5 171.215 67.375C169.007 66.25 166.236 65.6875 162.902 65.6875H147.715V142H128.965V51ZM179.84 142L159.09 101.438L178.902 101.312L199.902 141.125V142H179.84ZM251.742 51V142H233.055V51H251.742ZM279.742 51V65.6875H205.492V51H279.742ZM99.8125 239.062V253.688H52.3125V239.062H99.8125ZM57.875 202V293H39.125V202H57.875ZM113.188 202V293H94.5V202H113.188ZM153.277 202V293H134.59V202H153.277ZM222.055 269.188C222.055 267.562 221.805 266.104 221.305 264.812C220.847 263.479 219.972 262.271 218.68 261.188C217.388 260.062 215.576 258.958 213.242 257.875C210.909 256.792 207.888 255.667 204.18 254.5C200.055 253.167 196.138 251.667 192.43 250C188.763 248.333 185.513 246.396 182.68 244.188C179.888 241.938 177.68 239.333 176.055 236.375C174.472 233.417 173.68 229.979 173.68 226.062C173.68 222.271 174.513 218.833 176.18 215.75C177.847 212.625 180.18 209.958 183.18 207.75C186.18 205.5 189.722 203.771 193.805 202.562C197.93 201.354 202.451 200.75 207.367 200.75C214.076 200.75 219.93 201.958 224.93 204.375C229.93 206.792 233.805 210.104 236.555 214.312C239.347 218.521 240.742 223.333 240.742 228.75H222.117C222.117 226.083 221.555 223.75 220.43 221.75C219.347 219.708 217.68 218.104 215.43 216.938C213.222 215.771 210.43 215.188 207.055 215.188C203.805 215.188 201.097 215.688 198.93 216.688C196.763 217.646 195.138 218.958 194.055 220.625C192.972 222.25 192.43 224.083 192.43 226.125C192.43 227.667 192.805 229.062 193.555 230.312C194.347 231.562 195.513 232.729 197.055 233.812C198.597 234.896 200.492 235.917 202.742 236.875C204.992 237.833 207.597 238.771 210.555 239.688C215.513 241.188 219.867 242.875 223.617 244.75C227.409 246.625 230.576 248.729 233.117 251.062C235.659 253.396 237.576 256.042 238.867 259C240.159 261.958 240.805 265.312 240.805 269.062C240.805 273.021 240.034 276.562 238.492 279.688C236.951 282.812 234.722 285.458 231.805 287.625C228.888 289.792 225.409 291.438 221.367 292.562C217.326 293.688 212.805 294.25 207.805 294.25C203.305 294.25 198.867 293.667 194.492 292.5C190.117 291.292 186.138 289.479 182.555 287.062C179.013 284.646 176.18 281.562 174.055 277.812C171.93 274.062 170.867 269.625 170.867 264.5H189.68C189.68 267.333 190.117 269.729 190.992 271.688C191.867 273.646 193.097 275.229 194.68 276.438C196.305 277.646 198.222 278.521 200.43 279.062C202.68 279.604 205.138 279.875 207.805 279.875C211.055 279.875 213.722 279.417 215.805 278.5C217.93 277.583 219.492 276.312 220.492 274.688C221.534 273.062 222.055 271.229 222.055 269.188ZM298.083 202V293H279.395V202H298.083ZM326.083 202V216.688H251.833V202H326.083ZM413.61 245.375V249.688C413.61 256.604 412.672 262.812 410.797 268.312C408.922 273.812 406.277 278.5 402.86 282.375C399.443 286.208 395.36 289.146 390.61 291.188C385.902 293.229 380.672 294.25 374.922 294.25C369.214 294.25 363.985 293.229 359.235 291.188C354.527 289.146 350.443 286.208 346.985 282.375C343.527 278.5 340.839 273.812 338.922 268.312C337.047 262.812 336.11 256.604 336.11 249.688V245.375C336.11 238.417 337.047 232.208 338.922 226.75C340.797 221.25 343.443 216.562 346.86 212.688C350.318 208.812 354.402 205.854 359.11 203.812C363.86 201.771 369.089 200.75 374.797 200.75C380.547 200.75 385.777 201.771 390.485 203.812C395.235 205.854 399.318 208.812 402.735 212.688C406.193 216.562 408.86 221.25 410.735 226.75C412.652 232.208 413.61 238.417 413.61 245.375ZM394.672 249.688V245.25C394.672 240.417 394.235 236.167 393.36 232.5C392.485 228.833 391.193 225.75 389.485 223.25C387.777 220.75 385.693 218.875 383.235 217.625C380.777 216.333 377.964 215.688 374.797 215.688C371.631 215.688 368.818 216.333 366.36 217.625C363.943 218.875 361.881 220.75 360.172 223.25C358.506 225.75 357.235 228.833 356.36 232.5C355.485 236.167 355.047 240.417 355.047 245.25V249.688C355.047 254.479 355.485 258.729 356.36 262.438C357.235 266.104 358.527 269.208 360.235 271.75C361.943 274.25 364.027 276.146 366.485 277.438C368.943 278.729 371.756 279.375 374.922 279.375C378.089 279.375 380.902 278.729 383.36 277.438C385.818 276.146 387.881 274.25 389.547 271.75C391.214 269.208 392.485 266.104 393.36 262.438C394.235 258.729 394.672 254.479 394.672 249.688ZM430.95 202H464.888C471.846 202 477.825 203.042 482.825 205.125C487.867 207.208 491.742 210.292 494.45 214.375C497.158 218.458 498.513 223.479 498.513 229.438C498.513 234.312 497.679 238.5 496.013 242C494.388 245.458 492.075 248.354 489.075 250.688C486.117 252.979 482.638 254.812 478.638 256.188L472.7 259.312H443.2L443.075 244.688H465.013C468.304 244.688 471.033 244.104 473.2 242.938C475.367 241.771 476.992 240.146 478.075 238.062C479.2 235.979 479.763 233.562 479.763 230.812C479.763 227.896 479.221 225.375 478.138 223.25C477.054 221.125 475.408 219.5 473.2 218.375C470.992 217.25 468.221 216.688 464.888 216.688H449.7V293H430.95V202ZM481.825 293L461.075 252.438L480.888 252.312L501.888 292.125V293H481.825ZM526.29 202L545.29 243.5L564.29 202H584.728L554.79 259.875V293H535.79V259.875L505.79 202H526.29Z"
-          fill="#322C2C" />
-      </svg>
-      <div class="frame">
-      <svg width="642" height="832" viewBox="0 0 642 832" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <rect width="642" height="832" fill="#322C2C" />
-        <rect x="21.6162" y="13" width="603" height="805" fill="#FFFAFA" />
-        <rect x="33.5051" y="23" width="578" height="782" fill="#322C2C" />
-      </svg>
-      </div>
+      <div class="header-child"></div>
+      <div class="header-item"></div>
+      <div class="header-inner"></div>
+      <div class="rectangle-div"></div>
+      <b class="art-history">ART HISTORY</b>
+    </div>
+    <div class="frame">
+      <div class="frame-child"></div>
+      <div class="frame-item"></div>
+      <div class="frame-inner"></div>
+    <v-timeline>
+      <v-timeline-item class="classicism-group">
+        <template v-slot:icon>
+          <b class="classicism">CLASSICISM</b>
+          <div class="year">
+            <b class="bc">500 BC</b>
+          </div>
+        </template>
+      </v-timeline-item>
+      </v-timeline>
     </div>
   </div>
 </template>
-<script>
 
-export default {
-  name: "HeaderComponent",
-}
+
+
+
+<script>  
+  
+  export default {
+      name: "HeaderComponent"}
+
 </script>
 
-<style>
-.pageContainer {
-    display: flex;
-    flex-wrap: nowrap;
-    justify-content: space-evenly;
-    align-items: flex-start; /* Align items at the start of the cross axis */
-    width: 100%;         /* Full width of the container */
-    position: relative;     /* Fixed position relative to the viewport */
-    top: 0;              /* Align at the top of the viewport */
-    left: 0;             /* Align at the left of the viewport */
-    height: auto;       /* Set a specific height for the container */
-    padding: 0;          /* No padding */
-    margin: 0;           /* No margin */
-}
+<style scoped>
 
-.header, .frame {
-    height: 100%;               /* Height is 100% of their parent container */
-    display: flex;              /* Use flex layout for internal content */
-    justify-content: center;    /* Center content horizontally */
-    flex: 1 1 auto;                    /* Flex grow to fill available space */
-    align-items: flex-start;
-}
-
-.header {
-    margin-right: 10px;         /* Margin right for spacing between header and frame */
-
+      .header-child {
+      position: absolute;
+      top: 0px;
+      left: 0px;
+      background-color: #322c2c;
+      width: 621px;
+      height: 329px;
   }
-
-.frame {
-    flex-grow: 2; /* Allows frame to take twice the available space as header */
-    height: 832px; /* Height of the frame is larger */
-
-  }
-  @media (max-width: 768px) {
-    .header {
-        width: 100%;  /* Full width on smaller screens */
-        height: auto; /* Adjust height as necessary */
-        margin: 0;
-    }
-    .pageContainer {
-        flex-direction: column;
-    }
-}
-
-
-</style>
-
-
-<template>
-  <img :class="lineIcon" alt="" src="Line 1.svg" />
-</template>
-<script lang="ts">
-  import { defineComponent } from 'vue'
-  
-  
-  export default defineComponent({
-      name: "Line"})</script><style module>.lineIcon {
-      width: 100%;
-      position: relative;
-      max-width: 100%;
-      overflow: hidden;
-      height: 792px;
-      object-fit: contain;
-  }
+      .header-item {
+          position: absolute;
+          top: calc(50% - 152.2px);
+          left: 11px;
+          background-color: #fffafa;
+          width: 596.8px;
+          height: 305.7px;
+      }
+      .header-inner {
+          position: absolute;
+          top: 21.77px;
+          left: 20.17px;
+          background-color: #322c2c;
+          width: 579.4px;
+          height: 285.8px;
+      }
+      .rectangle-div {
+          position: absolute;
+          top: calc(50% - 132.5px);
+          left: 31px;
+          background-color: #fffafa;
+          width: 557px;
+          height: 263px;
+      }
+      .art-history {
+          position: absolute;
+          top: 23px;
+          left: 31px;
+          letter-spacing: 0.03em;
+          line-height: 117.77%;
+          display: inline-block;
+          width: 557px;
+          height: 263px;
+      }
+      .header {
+          position: absolute;
+          top: 13px;
+          left: 7px;
+          width: 621px;
+          height: 329px;
+          font-size: 128px;
+      }
+      .frame-child {
+          position: absolute;
+          top: 0px;
+          left: 0px;
+          background-color: #322c2c;
+          width: 642px;
+          height: 832px;
+      }
+      .frame-item {
+          position: absolute;
+          top: calc(50% - 403px);
+          left: 21.62px;
+          background-color: #fffafa;
+          width: 603.1px;
+          height: 805px;
+      }
+      .frame-inner {
+          position: absolute;
+          top: 23px;
+          left: 33.51px;
+          background-color: #322c2c;
+          width: 578.2px;
+          height: 782px;
+      }
+      .frame {
+          position: absolute;
+          top: 0px;
+          left: 638px;
+          width: 642px;
+          height: 832px;
+      }
+      .classicism-t-child {
+          position: absolute;
+          top: calc(50% - 46px);
+          left: 0px;
+          background-color: #fffafa;
+          border: 6px solid #322c2c;
+          box-sizing: border-box;
+          width: 272px;
+          height: 92px;
+      }
+      .xx-century {
+          position: absolute;
+          top: 28px;
+          left: 13px;
+          line-height: 117.77%;
+          display: inline-block;
+          width: 240px;
+          height: 49px;
+      }
+      .classicism-group {
+          position: absolute;
+          top: calc(50% - 46px);
+          left: 0px;
+          width: 272px;
+          height: 92px;
+      }
+      .th-century {
+          position: absolute;
+          top: calc(50% + 222px);
+          left: 701px;
+          width: 272px;
+          height: 92px;
+      }
+      .xix-century {
+          position: absolute;
+          top: 23px;
+          left: 18px;
+          letter-spacing: -0.03em;
+          line-height: 117.77%;
+          display: inline-block;
+          width: 240px;
+          height: 49px;
+      }
+      .th-century1 {
+          position: absolute;
+          top: calc(50% + 78px);
+          left: 701px;
+          width: 272px;
+          height: 92px;
+      }
+      .neoclassicism {
+          position: absolute;
+          top: 23px;
+          left: 7px;
+          letter-spacing: -0.11em;
+          line-height: 117.77%;
+          display: inline-block;
+          width: 270px;
+          height: 47px;
+      }
+      .classicism-group2 {
+          position: absolute;
+          top: calc(50% - 46px);
+          left: 0px;
+          width: 277px;
+          height: 92px;
+      }
+      .neoclassicism-t {
+          position: absolute;
+          top: calc(50% - 66px);
+          left: 701px;
+          width: 277px;
+          height: 92px;
+      }
+      .medieval {
+          position: absolute;
+          top: 22px;
+          left: 16px;
+          letter-spacing: 0.14em;
+          line-height: 117.77%;
+          display: inline-block;
+          width: 237px;
+          height: 44px;
+      }
+      .medieval-t {
+          position: absolute;
+          top: calc(50% - 210px);
+          left: 701px;
+          width: 272px;
+          height: 92px;
+      }
+      .classicism {
+          position: absolute;
+          top: 22px;
+          left: 18px;
+          letter-spacing: -0.01em;
+          line-height: 117.77%;
+          display: inline-block;
+          width: 240px;
+          height: 49px;
+      }
+      .classicism-t4 {
+          position: absolute;
+          top: calc(50% - 354px);
+          left: 701px;
+          width: 272px;
+          height: 92px;
+      }
+      .year-child {
+          position: absolute;
+          top: -3px;
+          left: -3px;
+          border-radius: 50%;
+          background-color: #fffafa;
+          border: 6px solid #322c2c;
+          box-sizing: border-box;
+          width: 50px;
+          height: 50px;
+      }
+      .bc {
+          position: absolute;
+          top: 4px;
+          left: 82px;
+          letter-spacing: -0.1em;
+          line-height: 117.77%;
+          display: inline-block;
+          width: 179px;
+          height: 40px;
+      }
+      .year {
+          position: absolute;
+          top: 89px;
+          left: 1009px;
+          width: 261px;
+          height: 44px;
+          font-size: 32px;
+          color: #fffafa;
+      }
+      .ac {
+          position: absolute;
+          top: 4px;
+          left: 82px;
+          letter-spacing: -0.1em;
+          line-height: 117.77%;
+          display: inline-block;
+          width: 117px;
+          height: 40px;
+      }
+      .year1 {
+          position: absolute;
+          top: 228px;
+          left: 1009px;
+          width: 199px;
+          height: 44px;
+          font-size: 32px;
+          color: #fffafa;
+      }
+      .ac1 {
+          position: absolute;
+          top: 0px;
+          left: 82px;
+          letter-spacing: -0.1em;
+          line-height: 117.77%;
+          display: inline-block;
+          width: 124px;
+          height: 40px;
+      }
+      .year2 {
+          position: absolute;
+          top: 376px;
+          left: 1009px;
+          width: 206px;
+          height: 44px;
+          font-size: 32px;
+          color: #fffafa;
+      }
+      .ac2 {
+          position: absolute;
+          top: 4px;
+          left: 82px;
+          letter-spacing: -0.1em;
+          line-height: 117.77%;
+          display: inline-block;
+          width: 111px;
+          height: 40px;
+      }
+      .year3 {
+          position: absolute;
+          top: 517px;
+          left: 1009px;
+          width: 193px;
+          height: 44px;
+          font-size: 32px;
+          color: #fffafa;
+      }
+      .year4 {
+          position: absolute;
+          top: 659px;
+          left: 1009px;
+          width: 261px;
+          height: 44px;
+          font-size: 32px;
+          color: #fffafa;
+      }
+      /* .macbook-air-light-child {
+          position: absolute;
+          top: 20px;
+          left: 1026px;
+          width: 5px;
+          height: 792px;
+          object-fit: contain;
+      } */
+       .image-2-icon {
+width: 792.02px;
+height: 0px;
+top: 20px;
+left: 1026px;
+gap: 0px;
+border: 10px 0px 0px 0px;
+opacity: 0px;
+angle: -89.64 deg;
+border: 10px solid #FFFFFF
+      } 
+      .macbook-air-light {
+          width: 100%;
+          position: relative;
+          background-color: #fff;
+          height: 832px;
+          overflow: hidden;
+          text-align: left;
+          font-size: 40px;
+          color: #322c2c;
+          font-family: Roboto;
+      }
   
   </style>
