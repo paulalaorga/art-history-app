@@ -1,16 +1,16 @@
 <template>
   <v-app>
-     <HeaderComponent />
+     <HomeViewComponent />
   </v-app>
 </template>
 
 <script>
-import HeaderComponent from './components/HeaderComponent.vue';
+import HomeViewComponent from './components/HomeViewComponent.vue';
 
 export default {
   name: 'App',
   components: {
-    HeaderComponent
+    HomeViewComponent
   },
 }
 </script>
