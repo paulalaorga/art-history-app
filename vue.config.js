@@ -1,7 +1,6 @@
-const { defineConfig } = require('@vue/cli-service');
-
-module.exports = defineConfig({
-  publicPath: process.env.NODE_ENV === 'production'
-    ? '/art-history-app/'  
-    : '/',
-});
+module.exports = {
+  devServer: {
+    host: "0.0.0.0",
+    allowedHosts: "all",
+  },
+};
