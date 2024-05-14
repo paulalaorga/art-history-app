@@ -32,6 +32,11 @@
         </v-timeline>
       </div>
     </div>
+    <div class="picture-frame">
+      <img
+        src="../assets/image-2.png"
+        alt="Picture Frame">
+    </div>
   </div>
 </template>
 
@@ -66,6 +71,7 @@ export default {
 </script>
 
 <style scoped>
+
 .desktop-light {
   width: 100%;
   position: relative;
@@ -127,22 +133,8 @@ export default {
   display: inline-block;
   width: 70%;
   height: auto;
-  font-size: 8.2vw;
-}
-
-@media (max-width: 480px) {
-  .header,
-  .h-frame1,
-  .h-frame2,
-  .h-frame3,
-  .h-frame4 {
-    width: auto; /* Full width of the parent */
-    height: auto; /* Adjust height based on content */
-    padding-top: 10%; /* Maintain aspect ratio with padding-top */
-  }
-  .art-history {
-    font-size: 8vw;
-  }
+  font-size: 118px;
+  font-family: initial;
 }
 
 .timeline-frame {
@@ -242,4 +234,14 @@ export default {
   display: inline;
   text-align: center;
 }
+.picture-frame {
+
+    position: absolute;
+    left: 70px;
+    right: 0;
+    bottom: 24px;
+    height: 448px;
+
+}
+
 </style>
