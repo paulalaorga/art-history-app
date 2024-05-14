@@ -25,7 +25,7 @@
             </template>
             <div class="timeline-content">
               <h2 :class="`mt-n1 font-weight-bold mb-4 text-inherit`">
-                Lorem ipsum
+                Loremipsum
               </h2>
             </div>
           </v-timeline-item>
@@ -76,7 +76,7 @@ export default {
   font-size: 40px;
   color: #322c2c;
   font-family: Roboto;
-  display: flex;
+  margin: 0;
 }
 .header {
   position: absolute;
@@ -91,8 +91,8 @@ export default {
   top: 0px;
   left: 0px;
   background-color: #322c2c;
-  width: 621px;
-  height: 329px;
+  width: 100%;
+  height: 100%;
 }
 .h-frame2 {
   position: absolute;
@@ -125,45 +125,72 @@ export default {
   letter-spacing: 0.03em;
   line-height: 117.77%;
   display: inline-block;
-  width: 450px;
-  height: 263px;
-  font-size: 118px;
+  width: 70%;
+  height: auto;
+  font-size: 8.2vw;
+}
+
+@media (max-width: 480px) {
+  .header,
+  .h-frame1,
+  .h-frame2,
+  .h-frame3,
+  .h-frame4 {
+    width: auto; /* Full width of the parent */
+    height: auto; /* Adjust height based on content */
+    padding-top: 10%; /* Maintain aspect ratio with padding-top */
+  }
+  .art-history {
+    font-size: 8vw;
+  }
 }
 
 .timeline-frame {
   position: absolute;
   top: 0px;
   left: 638px;
-  width: 642px;
+  width: 100vw;
   height: 832px;
-  justify: space-around;
+  justify-content: space-around;
+  display: flex;
+  flex-direction: column;
 }
 .timeline-frame1 {
   position: absolute;
   top: 0px;
   left: 0px;
   background-color: #322c2c;
-  width: 642px;
-  height: 832px;
+  width: 100vw;
+  height: 100vw;
+  margin: 12px;
 }
 .timeline-frame2 {
   position: absolute;
-  top: calc(50% - 403px);
-  left: 21.62px;
+  top: 24px;
+  left: 24px;
+  right: 24px;
   background-color: #fffafa;
-  width: 603.1px;
+  width: 100vw;
   height: 805px;
 }
 .timeline-frame3 {
   position: absolute;
-  top: 23px;
-  left: 33.51px;
+  top: 34px;
+  left: 34px;
+  right: 34px;
   background-color: #322c2c;
-  width: 578.2px;
+  width: 52vw;
   height: 782px;
   font-size: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
-
+.timeline-frame1,
+.timeline-frame2,
+.timeline-frame3 {
+  flex: 1;
+}
 .classicism-group {
   position: absolute;
   top: calc(50% - 46px);
@@ -210,12 +237,9 @@ export default {
 .timeline-content h2 {
   font-size: 30px; /* Adjust the font size as needed */
   color: inherit; /* Inherit the color from the parent */
-  margin: 20px;
-  position: relative;
-  padding: 16px;
+  padding: 10px;
   background-color: #fff;
-  margin-bottom: 16px;
   display: inline;
-  text-align-last: center;
+  text-align: center;
 }
 </style>
