@@ -13,19 +13,19 @@
       <div class="timeline-frame3">
         <v-timeline align="center" line-color="white" line-thickness="8px">
           <v-timeline-item
-            v-for="(year, i) in years"
-            :key="i"
+            v-for="era in eras"
+            :key="era.key"
             dot-color="white"
+            :years="era.years"
           >
             <template v-slot:opposite>
               <div
                 :class="`pt-1 font-weight-bold text-white`"
-                v-text="year.year"
-              ></div>
+              >{{ era.years }}</div>
             </template>
             <div class="timeline-content">
               <h2 :class="`mt-n1 font-weight-bold mb-4 text-inherit`">
-                Loremipsum
+                {{ era.key }}
               </h2>
             </div>
           </v-timeline-item>
@@ -41,34 +41,63 @@
 </template>
 
 <script>
+import axios from 'axios';
+
 export default {
-  name: "HeaderComponent",
-  data: () => ({
-    years: [
-      {
-        color: "cyan",
-        year: "1960",
-      },
-      {
-        color: "green",
-        year: "1970",
-      },
-      {
-        color: "pink",
-        year: "1980",
-      },
-      {
-        color: "amber",
-        year: "1990",
-      },
-      {
-        color: "orange",
-        year: "2000",
-      },
-    ],
-  }),
+  name: "DesktopHomeComponent",
+  data() {
+    return {
+      eras: [],
+      loading: false,
+      error: null,  // To store error messages for display or debugging
+    };
+  },
+  mounted() {
+    this.fetchData();
+  },
+  methods: {
+    async fetchData() {
+      this.loading = true;
+      const url = 'https://art-database.onrender.com/data.json';  // Endpoint URL
+      try {
+        const response = await axios.get(url);
+        console.log("Data received:", response.data);  // Log the raw data from the server
+        this.processData(response.data);
+      } catch (error) {
+        console.error('Error fetching data:', error);
+        this.error = 'Failed to fetch data. See console for details.';  // Update the error message for the UI
+      } finally {
+        this.loading = false;  // Ensure loading is always turned off after the fetch operation
+      }
+    },
+    processData(data) {
+      if (data.TimeLine) {
+        this.eras = Object.keys(data.TimeLine).reduce((acc, key) => {
+          const eraArray = data.TimeLine[key];
+          const years = eraArray.map(era => era.Years);
+          eraArray.forEach(era => {
+            const periods = Object.keys(era.Periods).map(periodKey => {
+              const period = era.Periods[periodKey];
+            });
+            acc.push({
+              key,
+              years: era.Years,
+              periods
+            });
+          });
+          return acc;
+        }, []);
+        console.log("Processed eras data:", this.eras); // Log the final structured data
+      } else {
+        console.error('Data is not in the expected format.');
+        this.error = 'Data is not in the expected format. See console for details.';
+      }
+    }
+  }
 };
 </script>
+
+
 
 <style scoped>
 
