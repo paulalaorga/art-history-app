@@ -22,6 +22,7 @@
               <div class="text-h4 font-small text-white"
               >{{ era.years }}</div>
             </template>
+            <!-- @mouseover="showPicture(era.pictureUrl)" @mouseleave="hidePicture" -->
             <div class="timeline-content">
               <h2>
                 {{ era.era }}
@@ -33,7 +34,7 @@
     </div>
     <div class="picture-frame">
       <img
-        src="../assets/image-2.png"
+        :src="currentPicture"
         alt="Picture Frame">
     </div>
   </div>
@@ -49,6 +50,7 @@ export default {
       data: [],
       loading: false,
       error: null,  // To store error messages for display or debugging
+      currentPicture: null
     };
   },
   mounted() {
@@ -77,11 +79,12 @@ export default {
           return {
             era: era.Era,
             years: era.Years,
+            picture: era.Picture
           };
         });
         console.log("Processed Timeline Data:", this.data);
       }
-    }
+    },
   }
 };
 </script>
@@ -239,7 +242,10 @@ export default {
     right: 0;
     bottom: 24px;
     height: 448px;
-
+    display: none;
+}
+.timeline-content:hover + .picture-frame {
+    display: block;
 }
 
 </style>
