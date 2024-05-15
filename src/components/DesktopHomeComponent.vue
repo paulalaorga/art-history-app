@@ -13,19 +13,18 @@
       <div class="timeline-frame3">
         <v-timeline align="center" line-color="white" line-thickness="8px">
           <v-timeline-item
-            v-for="era in eras"
-            :key="era.key"
+            v-for="era in data"
+            :key="era.era"
             dot-color="white"
             :years="era.years"
           >
             <template v-slot:opposite>
-              <div
-                :class="`pt-1 font-weight-bold text-white`"
+              <div class="text-h4 font-small text-white"
               >{{ era.years }}</div>
             </template>
             <div class="timeline-content">
-              <h2 :class="`mt-n1 font-weight-bold mb-4 text-inherit`">
-                {{ era.key }}
+              <h2>
+                {{ era.era }}
               </h2>
             </div>
           </v-timeline-item>
@@ -47,7 +46,7 @@ export default {
   name: "DesktopHomeComponent",
   data() {
     return {
-      eras: [],
+      data: [],
       loading: false,
       error: null,  // To store error messages for display or debugging
     };
@@ -63,6 +62,7 @@ export default {
         const response = await axios.get(url);
         console.log("Data received:", response.data);  // Log the raw data from the server
         this.processData(response.data);
+
       } catch (error) {
         console.error('Error fetching data:', error);
         this.error = 'Failed to fetch data. See console for details.';  // Update the error message for the UI
@@ -71,31 +71,21 @@ export default {
       }
     },
     processData(data) {
-      if (data.TimeLine) {
-        this.eras = Object.keys(data.TimeLine).reduce((acc, key) => {
-          const eraArray = data.TimeLine[key];
-          const years = eraArray.map(era => era.Years);
-          eraArray.forEach(era => {
-            const periods = Object.keys(era.Periods).map(periodKey => {
-              const period = era.Periods[periodKey];
-            });
-            acc.push({
-              key,
-              years: era.Years,
-              periods
-            });
-          });
-          return acc;
-        }, []);
-        console.log("Processed eras data:", this.eras); // Log the final structured data
-      } else {
-        console.error('Data is not in the expected format.');
-        this.error = 'Data is not in the expected format. See console for details.';
+      if (data && data.TimeLine) {
+        this.data = Object.keys(data.TimeLine).map(key => {
+          const era = data.TimeLine[key];
+          return {
+            era: era.Era,
+            years: era.Years,
+          };
+        });
+        console.log("Processed Timeline Data:", this.data);
       }
     }
   }
 };
 </script>
+
 
 
 
@@ -229,42 +219,21 @@ export default {
   width: 240px;
   height: 49px;
 }
-.bc {
-  position: absolute;
-  top: 4px;
-  left: 82px;
-  letter-spacing: -0.1em;
-  line-height: 117.77%;
-  display: inline-block;
-  width: 179px;
-  height: 40px;
-}
-.year {
-  position: absolute;
-  top: 89px;
-  left: 1009px;
-  width: 261px;
-  height: 44px;
-  font-size: 32px;
-  color: #fffafa;
-}
-.timeline-item {
-  position: relative;
-  padding: 16px;
-  background-color: #fff;
-  border-radius: 8px;
-  margin-bottom: 16px;
-}
+
+
 .timeline-content h2 {
   font-size: 30px; /* Adjust the font size as needed */
   color: inherit; /* Inherit the color from the parent */
   padding: 10px;
   background-color: #fff;
   display: inline;
+  justify-content: center;
   text-align: center;
+  font-family: initial;
+  background-origin: padding-box;
+  text-transform:inherit;
 }
 .picture-frame {
-
     position: absolute;
     left: 70px;
     right: 0;
