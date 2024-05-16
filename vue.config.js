@@ -1,6 +1,3 @@
 module.exports = {
-  devServer: {
-    host: "0.0.0.0",
-    allowedHosts: "all",
-  },
+  publicPath: process.env.NODE_ENV === "production" ? "/art-history-app/" : "/",
 };
