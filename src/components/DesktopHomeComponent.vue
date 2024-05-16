@@ -17,10 +17,13 @@
             :key="era.era"
             dot-color="white"
             :years="era.years"
+            @mouseover="showPicture(era.picture)"
+            @mouseleave="hidePicture"
           >
             <template v-slot:opposite>
-              <div class="text-h4 font-small text-white"
-              >{{ era.years }}</div>
+              <div class="text-h4 font-small text-white">
+                {{ era.years }}
+              </div>
             </template>
             <!-- @mouseover="showPicture(era.pictureUrl)" @mouseleave="hidePicture" -->
             <div class="timeline-content">
@@ -32,16 +35,14 @@
         </v-timeline>
       </div>
     </div>
-    <div class="picture-frame">
-      <img
-        :src="currentPicture"
-        alt="Picture Frame">
+    <div class="picture-frame" v-if="currentPicture">
+      <img :src="currentPicture" alt="Picture Frame" />
     </div>
   </div>
 </template>
 
 <script>
-import axios from 'axios';
+import axios from "axios";
 
 export default {
   name: "DesktopHomeComponent",
@@ -49,8 +50,8 @@ export default {
     return {
       data: [],
       loading: false,
-      error: null,  // To store error messages for display or debugging
-      currentPicture: null
+      error: null, // To store error messages for display or debugging
+      currentPicture: null,
     };
   },
   mounted() {
@@ -59,41 +60,42 @@ export default {
   methods: {
     async fetchData() {
       this.loading = true;
-      const url = 'https://art-database.onrender.com/data.json';  // Endpoint URL
+      const url = "https://art-database.onrender.com/data.json"; // Endpoint URL
       try {
         const response = await axios.get(url);
-        console.log("Data received:", response.data);  // Log the raw data from the server
+        console.log("Data received:", response.data); // Log the raw data from the server
         this.processData(response.data);
-
       } catch (error) {
-        console.error('Error fetching data:', error);
-        this.error = 'Failed to fetch data. See console for details.';  // Update the error message for the UI
+        console.error("Error fetching data:", error);
+        this.error = "Failed to fetch data. See console for details."; // Update the error message for the UI
       } finally {
-        this.loading = false;  // Ensure loading is always turned off after the fetch operation
+        this.loading = false; // Ensure loading is always turned off after the fetch operation
       }
     },
     processData(data) {
       if (data && data.TimeLine) {
-        this.data = Object.keys(data.TimeLine).map(key => {
+        this.data = Object.keys(data.TimeLine).map((key) => {
           const era = data.TimeLine[key];
           return {
             era: era.Era,
             years: era.Years,
-            picture: era.Picture
+            picture: era.Picture,
           };
         });
         console.log("Processed Timeline Data:", this.data);
       }
     },
-  }
+    showPicture(pictureUrl) {
+      this.currentPicture = pictureUrl;
+    },
+    hidePicture() {
+      this.currentPicture = null;
+    },
+  },
 };
 </script>
 
-
-
-
 <style scoped>
-
 .desktop-light {
   width: 100%;
   position: relative;
@@ -223,7 +225,6 @@ export default {
   height: 49px;
 }
 
-
 .timeline-content h2 {
   font-size: 30px; /* Adjust the font size as needed */
   color: inherit; /* Inherit the color from the parent */
@@ -234,18 +235,25 @@ export default {
   text-align: center;
   font-family: initial;
   background-origin: padding-box;
-  text-transform:inherit;
+  text-transform: inherit;
 }
 .picture-frame {
-    position: absolute;
-    left: 70px;
-    right: 0;
-    bottom: 24px;
-    height: 448px;
-    display: none;
+  position: absolute;
+  left: 115px;
+  right: 0;
+  bottom: 24px;
+  height: 448px;
+  width: 384px;
+  display: flex;
+  border: 8px solid #322c2c;
+  align-items: flex-start;
+  filter: grayscale(50%) brightness(90%) contrast(110%) saturate(10%);
 }
-.timeline-content:hover + .picture-frame {
-    display: block;
+.picture-frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Ensures the image covers the frame */
+  object-position: top;
+  /* Adjust the values to achieve the desired effect */
 }
-
 </style>
