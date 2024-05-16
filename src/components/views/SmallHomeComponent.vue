@@ -17,12 +17,9 @@
                 :key="era.era"
                 :picture="era.picture"
               >
-                <div class="timeline-period" @click="openPeriod">
-                  {{ era.era }}
-                </div>
-                <div class="period-image">
-                  <img :src="era.picture" alt="Picture Frame" />
-                </div>
+              <router-link  :to="{ name: 'EraPage', params: { id: era.era }}">
+                <div class="timeline-era">{{ era.era }}</div>
+                <img  class="era-image" :src="era.picture" alt="Picture Frame"/></router-link>
               </v-list-item>
             </v-list>
           </div>
@@ -74,8 +71,6 @@ export default {
         });
       }
     },
-    openPeriod(era) {
-    }
   },
 };
 </script>
@@ -86,6 +81,7 @@ export default {
   background-color: #fff;
   display: flex;
   max-width: 480px;
+  min-width: 375px;
   width: 100%;
   flex-direction: column;
   margin: 0 auto;
@@ -143,13 +139,13 @@ export default {
   display: flex;
   flex-direction: column;
 }
-.timeline-period {
+.timeline-era {
   margin-top: 8px;
+  margin-bottom: 8px;
   border-style: solid;
-  border-width: 8px;
   background-color: #fffafa;
   color: #322c2c;
-  padding: 8px 16px 8px 16px;
+  padding: 8px;
   text-transform: uppercase;
   text-align: center;
   font-size: 35px;
@@ -158,7 +154,7 @@ export default {
   font-size: calc(2vw + 2vh + 2vmin);
   overflow-y: hidden;
 }
-.period-image {
+.era-image {
   margin-top: 8px;
   display: flex;
   flex-direction: column;
@@ -169,12 +165,11 @@ export default {
   filter: grayscale(50%) brightness(90%) contrast(110%) saturate(10%);
   overflow: hidden;
   aspect-ratio: 1;
-  border: 8px solid #322c2c;
 }
 .img {
   width: 100%;
   height: 100%;
-  object-fit: auto;
+  object-fit: cover;
   object-position: top;
   position: relative;
   aspect-ratio: 2;

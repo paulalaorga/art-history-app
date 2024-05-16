@@ -107,6 +107,7 @@ export default {
   font-size: 40px;
   color: #322c2c;
   margin: 0;
+  font-family: 'Times New Roman', Times, serif;
 }
 .header {
   position: absolute;
