@@ -75,13 +75,12 @@ export default {
       }
     },
     openPeriod(era) {
-      this.$router.push({ name: 'PeriodPage', params: { era: era.era } });
     }
   },
 };
 </script>
 
-<style>
+<style scoped>
 
 .sm-light {
   background-color: #fff;

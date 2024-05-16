@@ -1,16 +1,18 @@
 <template>
     <div>
-     <SmallHomeComponent />
+      <component :is="currentComponent" />
     </div>
   </template>
   
   <script>
   import SmallHomeComponent from "./views/SmallHomeComponent.vue";
+  import DesktopHomeComponent from "./views/DesktopHomeComponent.vue";
   
   export default {
     name: "HomeComponent",
     components: {
       SmallHomeComponent,
+      DesktopHomeComponent,
     },
     data() {
       return {

@@ -1,16 +1,16 @@
 <template>
   <v-app>
-    <SmallHomeComponent/>
+    <HomeComponent />
   </v-app>
 </template>
 
 <script>
-import SmallHomeComponent from "./components/views/SmallHomeComponent.vue";
+import HomeComponent from './components/HomeComponent.vue';
 
 export default {
   name: "App",
   components: {
-    SmallHomeComponent,
+    HomeComponent,
   },
 };
 </script>
