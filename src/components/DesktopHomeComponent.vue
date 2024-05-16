@@ -11,7 +11,7 @@
       <div class="timeline-frame1"></div>
       <div class="timeline-frame2"></div>
       <div class="timeline-frame3">
-        <v-timeline align="center" line-color="white" line-thickness="8px">
+        <v-timeline side="start" line-color="white" line-thickness="8px">
           <v-timeline-item
             v-for="era in data"
             :key="era.era"
@@ -20,17 +20,18 @@
             @mouseover="showPicture(era.picture)"
             @mouseleave="hidePicture"
           >
-            <template v-slot:opposite>
-              <div class="text-h4 font-small text-white">
-                {{ era.years }}
-              </div>
-            </template>
-            <!-- @mouseover="showPicture(era.pictureUrl)" @mouseleave="hidePicture" -->
             <div class="timeline-content">
               <h2>
                 {{ era.era }}
               </h2>
             </div>
+            <template v-slot:opposite>
+              <div class="timeline-content">
+              <h3>
+                {{ era.years }}
+              </h3>
+              </div>
+            </template>
           </v-timeline-item>
         </v-timeline>
       </div>
@@ -105,7 +106,6 @@ export default {
   text-align: left;
   font-size: 40px;
   color: #322c2c;
-  font-family: Roboto;
   margin: 0;
 }
 .header {
@@ -158,7 +158,6 @@ export default {
   width: 70%;
   height: auto;
   font-size: 118px;
-  font-family: initial;
 }
 
 .timeline-frame {
@@ -207,36 +206,50 @@ export default {
 .timeline-frame3 {
   flex: 1;
 }
-.classicism-group {
-  position: absolute;
-  top: calc(50% - 46px);
-  left: 0px;
-  width: 272px;
-  height: 92px;
+
+
+.timeline-content {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  justify-content: start;
+  padding: 8px 16px 8px 16px;
+  right: 50px;
 }
-.classicism {
-  position: absolute;
-  top: 22px;
-  left: 18px;
-  letter-spacing: -0.01em;
-  line-height: 117.77%;
+.timeline-content h2 {
   display: inline-block;
-  width: 240px;
-  height: 49px;
+  justify-content: flex-start;
+  text-align: center;
+  padding: 8px 16px 8px 16px;
+  text-transform: uppercase;
+  font-family: 'Times New Roman', Times, serif;
+  font-weight: 700;
+  font-size: xx-large;
+  border-width: 8px;
+  background-color: #fffafa;
+  color: #322c2c;
+  padding: 8px 16px 8px 16px;
+  box-sizing: border-box; /* Ensures padding and border are included in the width and height */
+  width: 300px; /* Example fixed width */
+  height: 70px; /* Example fixed height */
+  overflow: hidden;
+}
+.timeline-content h3 {
+  display: inline;
+  justify-content: flex-start;
+  text-align: justify;
+  padding: 8px 16px 8px 16px;
+  text-transform: capitalize;
+  font-family: 'Times New Roman', Times, serif;
+  font-weight: 500;
+  font-size: x-large;
+  border-width: 8px;
+  background-color: #322c2c;
+  color: #fffafa;
+  padding: 8px 16px 8px 16px;
 }
 
-.timeline-content h2 {
-  font-size: 30px; /* Adjust the font size as needed */
-  color: inherit; /* Inherit the color from the parent */
-  padding: 10px;
-  background-color: #fff;
-  display: inline;
-  justify-content: center;
-  text-align: center;
-  font-family: initial;
-  background-origin: padding-box;
-  text-transform: inherit;
-}
+
 .picture-frame {
   position: absolute;
   left: 115px;

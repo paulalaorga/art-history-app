@@ -86,6 +86,7 @@ export default {
   width: 100%;
   flex-direction: column;
   margin: 0 auto;
+  font-family: 'Times New Roman', Times, serif;
 }
 .header-frame {
   background-color: #322c2c;
@@ -115,7 +116,7 @@ export default {
   padding: 6px 13px;
 }
 .art-history {
-  font-family: Roboto;
+  font-family: 'Times New Roman', Times, serif;
   background-color: #fffafa;
   text-align: justify;
   font-size: 1.2em;
@@ -148,9 +149,9 @@ export default {
   text-transform: uppercase;
   text-align: center;
   font-size: 35px;
-  font-family: Roboto;
+  font-family: 'Times New Roman', Times, serif;
   font-weight: 700;
-  font-size: calc(2vw + 2vh + 1vmin);
+  font-size: calc(2vw + 2vh + 2vmin);
 }
 .period-image {
   padding-top: 8px;
