@@ -1,110 +1,171 @@
 <template>
-    <body>
-      <v-list>
-        <v-list-item
-          v-for="item in items"
-          :key="item.id"
-          class="timeline-content-list"
-        >
-          <span class="timeline-years">{{ item.years }}</span>
-          <span
-            class="timeline-period"
-            >{{ item.period }}</span
-          >
-        </v-list-item>
-      </v-list>
-    </body>
-  </template>
-  
-  <script>
-  export default {
-    data: () => ({
-      items: [
-        {
-          id: 1,
-          years: "625 BC - AD 476",
-          period: "Ancient Rome",
-        },
-        {
-          id: 2,
-          years: "476 - 1400 AD",
-          period: "Medieval Art",
-        },
-        {
-          id: 3,
-          years: "1400 - 1600 AD",
-          period: "Renaissance Art",
-        },
-        {
-          id: 4,
-          years: "1600 - 1800 AD",
-          period: "Baroque Art",
-        },
-        {
-          id: 5,
-          years: "1800 - 1900 AD",
-          period: "Romanticism",
-        },
-        {
-          id: 6,
-          years: "1900 - 1945 AD",
-          period: "Modern Art",
-        },
-        {
-          id: 7,
-          years: "1945 - Present",
-          period: "Contemporary Art",
-        },
-      ],
-    })
+  <div class="sm-light">
+    <div class="header-frame">
+      <div class="header-frame2">
+        <div class="header-frame3">
+          <div class="art-history">ART HISTORY</div>
+        </div>
+      </div>
+    </div>
+    <div class="timeline-frame">
+      <div class="timeline-frame1">
+        <div class="timeline-frame2">
+          <div class="timeline-frame3">
+            <v-list class="timeline-content-list">
+              <v-list-item
+                v-for="era in data"
+                :key="era.era"
+                :picture="era.picture"
+              >
+                <div class="timeline-period">
+                  {{ era.era }}
+                </div>
+                <div class="period-image">
+                  <img :src="era.picture" alt="Picture Frame" />
+                </div>
+              </v-list-item>
+            </v-list>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
+
+<script>
+import axios from "axios";
+
+export default {
+  name: "SmallHomeComponent",
+  data() {
+    return {
+      data: [],
+      loading: false,
+      error: null, // To store error messages for display or debugging
     };
+  },
+  mounted() {
+    this.fetchData();
+  },
+  methods: {
+    async fetchData() {
+      this.loading = true;
+      const url = "https://art-database.onrender.com/data.json"; // Endpoint URL
+      try {
+        const response = await axios.get(url);
+        console.log("Data received:", response.data); // Log the raw data from the server
+        this.processData(response.data);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+        this.error = "Failed to fetch data. See console for details."; // Update the error message for the UI
+      } finally {
+        this.loading = false; // Ensure loading is always turned off after the fetch operation
+      }
+    },
+    processData(data) {
+      if (data && data.TimeLine) {
+        this.data = Object.keys(data.TimeLine).map((key) => {
+          const era = data.TimeLine[key];
+          return {
+            era: era.Era,
+            years: era.Years,
+            picture: era.Picture,
+          };
+        });
+      }
+    },
+  },
+};
+</script>
 
-  </script>
-  
-  <style>
-
-  .timeline-content {
-    width: 500px; /* Adjust this value based on your layout needs */
-    max-width: 100%;
-    border: 1px solid #333;
-    padding: 10px;
-    box-sizing: border-box;
-    align-items: center;
-    display: flex;
-    flex-direction: column;
-  }
-  
-  .timeline-years {
-    font-weight: bold; /* Make the years bold to stand out */
-    color: #555; /* Dark grey for better readability */
-    margin-bottom: 4px; /* Add some space between the years and the period name */
-    display: flex;
-  }
-  
-  .timeline-period {
-    color: #333; /* Slightly darker text for contrast */
-    font-size: x-large;
-  }
-  
-  .timeline-content-list {
-    border: 1px solid #333;
-    padding: 10px;
-    margin-bottom: 10px;
-    background-color: #8b2727;
-    align-items: center;
-    display: flex;
-    flex-direction: column;
-  }
-  
-  .timeline-content-list .timeline-years {
-    color: #fff; /* White text for better visibility */
-    font-size: large;
-  }
-  
-  .timeline-content-list .timeline-period {
-    display: none; /* Hide by default */
-    color: #fff; /* White text for better visibility */
-    font-size: xxx-large;
-  }
-  </style>
-  
+<style scoped>
+.sm-light {
+  background-color: #fff;
+  display: flex;
+  max-width: 480px;
+  width: 100%;
+  flex-direction: column;
+  margin: 0 auto;
+}
+.header-frame {
+  background-color: #322c2c;
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  font-size: 58px;
+  color: #322c2c;
+  font-weight: 700;
+  letter-spacing: -5.8px;
+  line-height: 118%;
+  justify-content: center;
+  padding: 7px 12px;
+}
+.header-frame2 {
+  background-color: #fffafa;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 4px 7px;
+}
+.header-frame3 {
+  background-color: #322c2c;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 6px 13px;
+}
+.art-history {
+  font-family: Roboto;
+  background-color: #fffafa;
+  text-align: justify;
+  font-size: 1.2em;
+}
+.timeline-frame2 {
+  background-color: #322c2c;
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0 12px;
+}
+.timeline-frame3 {
+  background-color: #fffafa;
+  display: flex;
+  flex-direction: column;
+  padding: 7px 6px 0;
+}
+.timeline-content-list {
+  background-color: #322c2c;
+  display: flex;
+  flex-direction: column;
+}
+.timeline-period {
+  border-style: solid;
+  border-width: 8px;
+  background-color: #fffafa;
+  color: #322c2c;
+  padding: 8px 16px 8px 16px;
+  text-transform: uppercase;
+  text-align: center;
+  font-size: 35px;
+  font-family: Roboto;
+  font-weight: 700;
+  font-size: calc(2vw + 2vh + 1vmin);
+}
+.period-image {
+  padding-top: 8px;
+  display: flex;
+  align-items: top;
+  justify-content: center;
+  height: 400px;
+  filter: grayscale(50%) brightness(90%) contrast(110%) saturate(10%);
+  overflow: hidden;
+}
+.img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: top;
+  position: relative;
+}
+</style>

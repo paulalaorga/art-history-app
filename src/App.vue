@@ -1,18 +1,18 @@
 <template>
   <v-app>
-     <DesktopHomeComponent />
+    <SmallHomeComponent />
   </v-app>
 </template>
 
 <script>
-import DesktopHomeComponent from './components/DesktopHomeComponent.vue';
+import SmallHomeComponent from "./components/SmallHomeComponent.vue";
 
 export default {
-  name: 'App',
+  name: "App",
   components: {
-    DesktopHomeComponent
+    SmallHomeComponent,
   },
-}
+};
 </script>
 
 <style>

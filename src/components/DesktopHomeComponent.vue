@@ -246,7 +246,7 @@ export default {
   width: 384px;
   display: flex;
   border: 8px solid #322c2c;
-  align-items: flex-start;
+  align-items: center;
   filter: grayscale(50%) brightness(90%) contrast(110%) saturate(10%);
 }
 .picture-frame img {
