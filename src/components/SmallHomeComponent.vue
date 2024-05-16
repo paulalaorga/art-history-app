@@ -158,7 +158,7 @@ export default {
   flex-direction: column;
   align-items: top;
   justify-content: top;
-  width: 400px;
+  width: 412px;
   height: 300px;
   filter: grayscale(50%) brightness(90%) contrast(110%) saturate(10%);
   overflow: hidden;
