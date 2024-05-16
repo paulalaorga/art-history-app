@@ -155,17 +155,21 @@ export default {
 .period-image {
   padding-top: 8px;
   display: flex;
+  flex-direction: column;
   align-items: top;
-  justify-content: center;
-  height: 400px;
+  justify-content: top;
+  width: 400px;
+  height: 300px;
   filter: grayscale(50%) brightness(90%) contrast(110%) saturate(10%);
   overflow: hidden;
+  aspect-ratio: 1;
 }
 .img {
   width: 100%;
   height: 100%;
-  object-fit: contain;
+  object-fit: auto;
   object-position: top;
   position: relative;
+  aspect-ratio: 2;
 }
 </style>
