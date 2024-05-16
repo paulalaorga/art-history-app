@@ -17,7 +17,7 @@
                 :key="era.era"
                 :picture="era.picture"
               >
-                <div class="timeline-period">
+                <div class="timeline-period" @click="openPeriod">
                   {{ era.era }}
                 </div>
                 <div class="period-image">
@@ -74,11 +74,15 @@ export default {
         });
       }
     },
+    openPeriod(era) {
+      this.$router.push({ name: 'PeriodPage', params: { era: era.era } });
+    }
   },
 };
 </script>
 
-<style scoped>
+<style>
+
 .sm-light {
   background-color: #fff;
   display: flex;
@@ -141,6 +145,7 @@ export default {
   flex-direction: column;
 }
 .timeline-period {
+  margin-top: 8px;
   border-style: solid;
   border-width: 8px;
   background-color: #fffafa;
@@ -152,9 +157,10 @@ export default {
   font-family: 'Times New Roman', Times, serif;
   font-weight: 700;
   font-size: calc(2vw + 2vh + 2vmin);
+  overflow-y: hidden;
 }
 .period-image {
-  padding-top: 8px;
+  margin-top: 8px;
   display: flex;
   flex-direction: column;
   align-items: top;
@@ -164,6 +170,7 @@ export default {
   filter: grayscale(50%) brightness(90%) contrast(110%) saturate(10%);
   overflow: hidden;
   aspect-ratio: 1;
+  border: 8px solid #322c2c;
 }
 .img {
   width: 100%;
@@ -172,5 +179,6 @@ export default {
   object-position: top;
   position: relative;
   aspect-ratio: 2;
+ 
 }
 </style>

@@ -1,17 +1,20 @@
-import { createApp } from 'vue'
+import { createApp } from 'vue';
+import App from './App.vue';
+import router from './router/index.js';  // Ensure you have an index.js in your router directory
 
 // Vuetify
-import 'vuetify/styles'
-import { createVuetify } from 'vuetify'
-import * as components from 'vuetify/components'
-import * as directives from 'vuetify/directives'
+import 'vuetify/styles';  // Ensure you have installed Vuetify properly
+import { createVuetify } from 'vuetify';
+import * as components from 'vuetify/components';
+import * as directives from 'vuetify/directives';
 
-// Components
-import App from './App.vue'
 
-const vuetify = createVuetify({
-  components,
-  directives,
-})
+// Create Vuetify instance
+const vuetify = createVuetify({ components, directives });
 
-createApp(App).use(vuetify).mount('#app')
+
+// Create and mount the Vue application
+const app = createApp(App);
+app.use(vuetify);
+app.use(router);
+app.mount('#app');
