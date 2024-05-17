@@ -23,13 +23,13 @@
             @mouseover="showPicture(period.picture)"
             @mouseleave="hidePicture"
           >
-
-<!--           <router-link  :to="{ name: 'PeriodPage', params: { id: period.period }}">
- -->            <div class="timeline-content">
+          <router-link  :to="{ name: 'PeriodPage', params: { id: period.period }}">
+            <div class="timeline-content">
               <h2>
                 {{ period.period }}
               </h2>
             </div>
+            </router-link>
             <template v-slot:opposite>
 <!--               <router-link  :to="{ name: 'PeriodPage', params: { id: period.period }}">
  -->              <div class="timeline-content">

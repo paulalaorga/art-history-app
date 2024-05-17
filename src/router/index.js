@@ -1,11 +1,13 @@
 import { createRouter, createWebHistory } from 'vue-router';
 import HomeComponent from '../components/HomeComponent.vue';
 import EraPage from '../components/pages/EraPage.vue';
+import PeriodPage from '../components/pages/PeriodPage.vue';
 
 
 const routes = [
   { path: '/', component: HomeComponent, name: 'Home'},
-  { path: '/era/:id', component: EraPage, props: true, name: 'EraPage'}
+  { path: '/era/:id', component: EraPage, props: true, name: 'EraPage'},
+  { path: '/period/:id', component: PeriodPage, props: true, name: 'PeriodPage'}
 
 ];
 
