@@ -20,17 +20,21 @@
             @mouseover="showPicture(era.picture)"
             @mouseleave="hidePicture"
           >
+          <router-link  :to="{ name: 'EraPage', params: { id: era.era }}">
             <div class="timeline-content">
               <h2>
                 {{ era.era }}
               </h2>
             </div>
+            </router-link>
             <template v-slot:opposite>
+              <router-link  :to="{ name: 'EraPage', params: { id: era.era }}">
               <div class="timeline-content">
               <h3>
                 {{ era.years }}
               </h3>
-              </div>
+            </div>
+            </router-link>
             </template>
           </v-timeline-item>
         </v-timeline>
@@ -200,7 +204,6 @@ export default {
   font-size: 40px;
   display: flex;
   align-items: center;
-  justify-content: center;
 }
 .timeline-frame1,
 .timeline-frame2,
@@ -213,10 +216,16 @@ export default {
   display: flex;
   flex-direction: column;
   align-items: start;
-  justify-content: start;
+  justify-content: space-between;
   padding: 8px 16px 8px 16px;
   right: 50px;
+  text-decoration: none;
 }
+
+a {
+    text-decoration: none;
+}
+
 .timeline-content h2 {
   display: inline-block;
   justify-content: flex-start;
@@ -236,7 +245,6 @@ export default {
   overflow: hidden;
 }
 .timeline-content h3 {
-  display: inline;
   justify-content: flex-start;
   text-align: justify;
   padding: 8px 16px 8px 16px;
@@ -245,7 +253,6 @@ export default {
   font-weight: 500;
   font-size: x-large;
   border-width: 8px;
-  background-color: #322c2c;
   color: #fffafa;
   padding: 8px 16px 8px 16px;
 }

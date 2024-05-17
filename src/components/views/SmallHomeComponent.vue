@@ -168,11 +168,14 @@ export default {
 }
 .img {
   width: 100%;
-  height: 100%;
+  height: auto;
   object-fit: cover;
   object-position: top;
   position: relative;
-  aspect-ratio: 2;
+  aspect-ratio: 1;
  
+}
+a {
+    text-decoration: none;
 }
 </style>
