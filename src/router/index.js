@@ -12,7 +12,7 @@ const routes = [
 ];
 
 const router = createRouter({
-  history: createWebHistory(),  // Use the HTML5 History API
+  history: createWebHashHistory(),  // Use the HTML5 History API
   routes                        // Short for `routes: routes`
 });
 
