@@ -71,6 +71,10 @@ export default {
         });
       }
     },
+    selectedEra(eraId) {
+      this.$router.push({ name: "EraPage", params: { id: eraId } });
+      console.log("Selected Era:", era);
+    },
   },
 };
 </script>

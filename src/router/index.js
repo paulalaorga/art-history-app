@@ -1,5 +1,5 @@
 import { createRouter, createWebHistory } from 'vue-router';
-import HomeComponent from '../components/HomeComponent.vue';
+import HomeComponent from '../components/pages/HomeComponent.vue';
 import EraPage from '../components/pages/EraPage.vue';
 import PeriodPage from '../components/pages/PeriodPage.vue';
 
