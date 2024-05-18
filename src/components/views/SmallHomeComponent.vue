@@ -1,25 +1,25 @@
 <template>
   <div class="sm-light">
-    <div class="header-frame">
-      <div class="header-frame2">
-        <div class="header-frame3">
-          <div class="art-history">ART HISTORY</div>
+    <div class="sm-header-frame">
+      <div class="sm-header-frame2">
+        <div class="sm-header-frame3">
+          <div class="sm-art-history">ART HISTORY</div>
         </div>
       </div>
     </div>
-    <div class="timeline-frame">
-      <div class="timeline-frame1">
-        <div class="timeline-frame2">
-          <div class="timeline-frame3">
-            <v-list class="timeline-content-list">
+    <div class="sm-timeline-frame">
+      <div class="sm-timeline-frame1">
+        <div class="sm-timeline-frame2">
+          <div class="sm-timeline-frame3">
+            <v-list class="sm-timeline-content-list">
               <v-list-item
                 v-for="era in data"
                 :key="era.era"
                 :picture="era.picture"
               >
               <router-link  :to="{ name: 'EraPage', params: { id: era.era }}">
-                <div class="timeline-era">{{ era.era }}</div>
-                <img  class="era-image" :src="era.picture" alt="Picture Frame"/></router-link>
+                <div class="sm-timeline-era">{{ era.era }}</div>
+                <img  class="sm-era-image" :src="era.picture" alt="Picture Frame"/></router-link>
               </v-list-item>
             </v-list>
           </div>
@@ -75,7 +75,7 @@ export default {
 };
 </script>
 
-<style scoped>
+<style>
 
 .sm-light {
   background-color: #fff;
@@ -87,7 +87,7 @@ export default {
   margin: 0 auto;
   font-family: 'Times New Roman', Times, serif;
 }
-.header-frame {
+.sm-header-frame {
   background-color: #322c2c;
   display: flex;
   width: 100%;
@@ -100,27 +100,27 @@ export default {
   justify-content: center;
   padding: 7px 12px;
 }
-.header-frame2 {
+.sm-header-frame2 {
   background-color: #fffafa;
   display: flex;
   flex-direction: column;
   justify-content: center;
   padding: 4px 7px;
 }
-.header-frame3 {
+.sm-header-frame3 {
   background-color: #322c2c;
   display: flex;
   flex-direction: column;
   justify-content: center;
   padding: 6px 13px;
 }
-.art-history {
+.sm-art-history {
   font-family: 'Times New Roman', Times, serif;
   background-color: #fffafa;
   text-align: justify;
   font-size: 1.2em;
 }
-.timeline-frame2 {
+.sm-timeline-frame2 {
   background-color: #322c2c;
   display: flex;
   width: 100%;
@@ -128,18 +128,18 @@ export default {
   justify-content: center;
   padding: 0 12px;
 }
-.timeline-frame3 {
+.sm-timeline-frame3 {
   background-color: #fffafa;
   display: flex;
   flex-direction: column;
   padding: 7px 6px 0;
 }
-.timeline-content-list {
+.sm-timeline-content-list {
   background-color: #322c2c;
   display: flex;
   flex-direction: column;
 }
-.timeline-era {
+.sm-timeline-era {
   margin-top: 8px;
   margin-bottom: 8px;
   border-style: solid;
@@ -154,25 +154,22 @@ export default {
   font-size: calc(2vw + 2vh + 2vmin);
   overflow-y: hidden;
 }
-.era-image {
+.sm-era-image {
   margin-top: 8px;
   display: flex;
   flex-direction: column;
-  align-items: top;
-  justify-content: top;
-  width: 412px;
-  height: 300px;
+  max-width: 412px;
+  height: 500px;
   filter: grayscale(50%) brightness(90%) contrast(110%) saturate(10%);
   overflow: hidden;
-  aspect-ratio: 1;
 }
-.img {
-  width: 100%;
-  height: auto;
+img {
+  width: auto;
+  height: 100%;
   object-fit: cover;
   object-position: top;
   position: relative;
-  aspect-ratio: 1;
+  aspect-ratio: 2;
  
 }
 a {

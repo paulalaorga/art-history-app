@@ -49,73 +49,78 @@
 </template>
 
 <script>
+import { ref, onMounted } from 'vue';
 import axios from "axios";
 
 export default {
   name: "EraPage",
-  components: {
-  },
   props: ["id"],
-  data() {
-    return {
-      foundEra: null,
-      loading: false,
-      error: null, // To store error messages for display or debugging
-      currentPicture: null,
-    };
-  },
-  mounted() {
-    console.log("Era ID:", this.id);
-    this.fetchData();
-  },
-  methods: {
-    async fetchData() {
-      this.loading = true;
-      const url = "https://art-database.onrender.com/data.json"; // Endpoint URL
+  setup(props) {
+    const url = "https://art-database.onrender.com/data.json";
+    const data = ref(null);
+    const loading = ref(false);
+    const error = ref(null);
+    const foundEra = ref(null);
+    const currentPicture = ref(null);
+
+    const fetchData = async () => {
+      loading.value = true;
       try {
         const response = await axios.get(url);
-        console.log("Data received:", response.data); // Log the raw data from the server
-        this.processData(response.data);
+        data.value = response.data;
+        console.log("Data received:", data.value);
+        processData();
       } catch (error) {
         console.error("Error fetching data:", error);
-        this.error = "Failed to fetch data. See console for details."; // Update the error message for the UI
+        error.value = "Failed to fetch data. See console for details.";
       } finally {
-        this.loading = false; // Ensure loading is always turned off after the fetch operation
+        loading.value = false;
       }
-    },
-    processData(data) {
-      if (data && data.TimeLine) {
-        const foundEra = Object.values(data.TimeLine).find(era => era.Era === this.id);
-        console.log("Found Era:", foundEra); // Log the found era
-        if (foundEra) {
-          if (typeof foundEra.Periods === "object") {
-            this.foundEra = {
-            era: foundEra.Era,
-            periods: Object.values(foundEra.Periods).map(period => ({
+    };
+
+    const processData = () => {
+      console.log("Processing data:", data.value);
+      console.log("Era ID:", props.id);
+      if (data.value && data.value.TimeLine) {
+        const eras = Object.values(data.value.TimeLine);
+        const era = eras.find((era) => era.Era === props.id);
+        if (era) {
+          foundEra.value = {
+            era: era.Era,
+            periods: Object.values(era.Periods).map(period => ({
               period: period.Period,
               years: period.Years,
               picture: period.Picture,
-              })),
-            };
+            })),
           };
-          console.log("Processed Era Data:", foundEra); // Log the processed data
-    } else {
-      console.log("Era not found");
-    }
-  } else {
-    console.log("Invalid data format");
-}
-},
-showPicture(pictureUrl) {
-      this.currentPicture = pictureUrl;
-    },
-    hidePicture() {
-      this.currentPicture = null;
-    },
-}
+        console.log("Processed Era Data:", foundEra.value);
+        } else {
+          console.log("Era not found for id:", props.id);
+        }
+      } else {
+        console.log("Invalid data format:", data.value);
+      }
+  };
+  const showPicture = (pictureUrl) => {
+    currentPicture.value = pictureUrl;
+  };
+  const hidePicture = () => {
+    currentPicture.value = null;
+  };
+
+  onMounted(fetchData);
+
+  return {
+    data,
+    loading,
+    error,
+    foundEra,
+    currentPicture,
+    showPicture,
+    hidePicture,
 };
-
-
+  },
+};
 </script>
 
 <style>

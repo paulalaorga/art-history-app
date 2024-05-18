@@ -11,104 +11,97 @@
         <div class="timeline-frame1"></div>
         <div class="timeline-frame2"></div>
         <div class="timeline-frame3">
-          <div v-if="foundPeriod" class="era-title">
-                  {{ foundPeriod.period }}
+        <v-list v-if="periodData" class="list-content">
+        
+          <div class="era-title">
+            {{ periodData.period }}
           </div>
-          <v-timeline v-if="foundPeriod" side="start" line-color="white" line-thickness="8px">
-            <v-timeline-item
-              v-for="period in foundPeriod.works"
-              :key="period.works"
-              dot-color="white"
-              :years="period.years"
-              @mouseover="showPicture(period.picture)"
-              @mouseleave="hidePicture"
+          <v-list-item
+              v-for="work in periodData.works"
+              :key="work.id"
             >
-  
-  <!--           <router-link  :to="{ name: 'PeriodPage', params: { id: period.period }}">
-   -->            <div class="timeline-content">
-                <h2>
-                  {{ period.period }}
-                </h2>
-              </div>
-              <template v-slot:opposite>
-  <!--               <router-link  :to="{ name: 'PeriodPage', params: { id: period.period }}">
-   -->              <div class="timeline-content">
-                <h3>
-                  {{ period.years }}
-                </h3>
-              </div>
-              </template>
-            </v-timeline-item>
-          </v-timeline>
-      </div>
-    </div>
+              <div class="list-content">
+                <h2>{{ work.name }}</h2>
+                <h3>{{ work.date }}</h3>
+            </div>
+        </v-list-item>
+        </v-list>
     <div class="picture-frame" v-if="currentPicture">
         <img :src="currentPicture" alt="Picture Frame" />
       </div>
-  </div>
+    </div>
+    </div>
+    </div>
   </template>
   
   <script>
-  import axios from "axios";
+  import { ref, onMounted } from 'vue';
+  import axios from 'axios';
   
   export default {
-    name: "PeriodPage",
-    props: ["id"],
-    data() {
-      return {
-        foundPeriod: null,
-        loading: false,
-        error: null, // To store error messages for display or debugging
-        currentPicture: null,
-      };
-    },
-    mounted() {
-      console.log("Period ID:", this.id);
-      this.fetchData();
-    },
-    methods: {
-      async fetchData() {
-        this.loading = true;
-        const url = "https://art-database.onrender.com/data.json"; // Endpoint URL
+    name: 'PeriodPage',
+    props: ['id'],
+    setup(props) {
+      const url = 'https://art-database.onrender.com/data.json';
+      const data = ref(null);
+      const loading = ref(false);
+      const error = ref(null);
+      const periodData = ref(null);
+  
+      const fetchData = async () => {
+        loading.value = true;
         try {
           const response = await axios.get(url);
-          console.log("Data received:", response.data); // Log the raw data from the server
-          this.processData(response.data);
-        } catch (error) {
-          console.error("Error fetching data:", error);
-          this.error = "Failed to fetch data. See console for details."; // Update the error message for the UI
+          data.value = response.data;
+          console.log('Data received:', data.value);
+          processData();
+        } catch (err) {
+          error.value = 'Failed to fetch data. See console for details.';
+          console.error('Error fetching data:', err);
         } finally {
-          this.loading = false; // Ensure loading is always turned off after the fetch operation
+          loading.value = false;
         }
-      }},
-      processData(data) {
-      if (data && data.TimeLine && data.TimeLine.Era) {
-        const foundEra = data.TimeLine.Era[this.id];
-        if (foundEra) {
-          this.foundEra = {
-            era: this.id,
-            periods: Object.values(foundEra.Periods).map(period => ({
-              period: period.Period,
-              years: period.Years,
-              picture: period.Picture,
-            })),
-            }}
-            console.log("Processed Era Data:", this.foundEra);
-        }},
-  showPicture(pictureUrl) {
-        this.currentPicture = pictureUrl;
-      },
-      hidePicture() {
-        this.currentPicture = null;
+      };
+  
+      const processData = () => {
+        console.log('Processing data', data.value);
+        console.log('Period ID:', props.id);
+        if (data.value && data.value.TimeLine) {
+          const eras = Object.values(data.value.TimeLine);
+          for (const era of eras) {
+            const period = Object.values(era.Periods).find((period) => period.Period === props.id);
+            if (period) {
+              periodData.value = {
+                period: period.Period,
+                works: period.Works.map(work => ({
+                  name: work.Name,
+                  date: work.Date,
+                  image: work.Image,
+                }))
+              };
+              console.log('Found Period:', periodData.value);
+              return;
+            }
+            }
+            console.log('Period not found');
+        } else {
+            console.log("Invalid data format:", data.value);
       }
     };
 
+  onMounted(fetchData);
+  return {
+    data,
+    loading,
+    error,
+    periodData,
+    };
+    }
+    };
 
-  
-  
   </script>
   
-  <style>
+  <style scoped>
   .period-page-desktop {
     width: 100%;
     position: relative;
@@ -239,14 +232,14 @@
     margin-bottom: 8px;
   }
   
-  .timeline-content h2 {
+  .list-content h2 {
     justify-content: start;
     text-align: center;
     padding: 8px 16px 8px 16px;
     text-transform: uppercase;
     font-family: 'Times New Roman', Times, serif;
     font-weight: 700;
-    font-size: xx-large;
+    font-size: large;
     border-width: 8px;
     background-color: #fffafa;
     color: #322c2c;
@@ -255,7 +248,7 @@
     height: 70px; 
     justify-content: left;
   } 
-  .timeline-content h3 {
+  .list-content h3 {
     justify-content: flex-start;
     text-align: justify;
     padding: 8px 16px 8px 16px;
@@ -264,7 +257,7 @@
     font-weight: 500;
     font-size: x-large;
     border-width: 8px;
-    color: #fffafa;
+    color: #0a0a0a;
     padding: 8px 16px 8px 16px;
   }
   
