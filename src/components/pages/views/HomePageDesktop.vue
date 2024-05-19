@@ -1,16 +1,16 @@
 <template>
-  <div class="desktop-light">
-    <div class="header">
-      <div class="h-frame1"></div>
-      <div class="h-frame2"></div>
-      <div class="h-frame3"></div>
-      <div class="h-frame4"></div>
-      <b class="art-history">ART HISTORY</b>
+  <div class="hp-desktop-light">
+    <div class="hp-header">
+      <div class="hp-h-frame1"></div>
+      <div class="hp-h-frame2"></div>
+      <div class="hp-h-frame3"></div>
+      <div class="hp-h-frame4"></div>
+      <b class="hp-art-history">ART HISTORY</b>
     </div>
-    <div class="timeline-frame">
-      <div class="timeline-frame1"></div>
-      <div class="timeline-frame2"></div>
-      <div class="timeline-frame3">
+    <div class="hp-timeline-frame">
+      <div class="hp-timeline-frame1"></div>
+      <div class="hp-timeline-frame2"></div>
+      <div class="hp-timeline-frame3">
         <v-timeline side="start" line-color="white" line-thickness="8px">
           <v-timeline-item
             v-for="era in data"
@@ -21,7 +21,7 @@
             @mouseleave="hidePicture"
           >
           <router-link  :to="{ name: 'EraPage', params: { id: era.era }}">
-            <div class="timeline-content">
+            <div class="hp-timeline-content">
               <h2>
                 {{ era.era }}
               </h2>
@@ -29,7 +29,7 @@
             </router-link>
             <template v-slot:opposite>
               <router-link  :to="{ name: 'EraPage', params: { id: era.era }}">
-              <div class="timeline-content">
+              <div class="hp-timeline-content">
               <h3>
                 {{ era.years }}
               </h3>
@@ -40,7 +40,7 @@
         </v-timeline>
       </div>
     </div>
-    <div class="picture-frame" v-if="currentPicture">
+    <div class="hp-picture-frame" v-if="currentPicture">
       <img :src="currentPicture" alt="Picture Frame" />
     </div>
   </div>
@@ -50,7 +50,7 @@
 import axios from "axios";
 
 export default {
-  name: "DesktopHomeComponent",
+  name: "HomePageDesktop",
   data() {
     return {
       data: [],
@@ -68,10 +68,8 @@ export default {
       const url = "https://art-database.onrender.com/data.json"; // Endpoint URL
       try {
         const response = await axios.get(url);
-        console.log("Data received:", response.data); // Log the raw data from the server
         this.processData(response.data);
       } catch (error) {
-        console.error("Error fetching data:", error);
         this.error = "Failed to fetch data. See console for details."; // Update the error message for the UI
       } finally {
         this.loading = false; // Ensure loading is always turned off after the fetch operation
@@ -87,7 +85,6 @@ export default {
             picture: era.Picture,
           };
         });
-        console.log("Processed Timeline Data:", this.data);
       }
     },
     showPicture(pictureUrl) {
@@ -101,7 +98,7 @@ export default {
 </script>
 
 <style scoped>
-.desktop-light {
+.hp-desktop-light {
   width: 100%;
   position: relative;
   background-color: #fff;
@@ -113,7 +110,7 @@ export default {
   margin: 0;
   font-family: 'Times New Roman', Times, serif;
 }
-.header {
+.hp-header {
   position: absolute;
   top: 13px;
   left: 7px;
@@ -121,7 +118,7 @@ export default {
   height: 329px;
   flex: 1;
 }
-.h-frame1 {
+.hp-h-frame1 {
   position: absolute;
   top: 0px;
   left: 0px;
@@ -129,7 +126,7 @@ export default {
   width: 100%;
   height: 100%;
 }
-.h-frame2 {
+.hp-h-frame2 {
   position: absolute;
   top: calc(50% - 152.2px);
   left: 11px;
@@ -137,7 +134,7 @@ export default {
   width: 596.8px;
   height: 305.7px;
 }
-.h-frame3 {
+.hp-h-frame3 {
   position: absolute;
   top: 21.77px;
   left: 20.17px;
@@ -145,7 +142,7 @@ export default {
   width: 579.4px;
   height: 285.8px;
 }
-.h-frame4 {
+.hp-h-frame4 {
   position: absolute;
   top: calc(50% - 132.5px);
   left: 31px;
@@ -153,7 +150,7 @@ export default {
   width: 557px;
   height: 263px;
 }
-.art-history {
+.hp-art-history {
   position: absolute;
   top: 23px;
   left: 31px;
@@ -165,7 +162,7 @@ export default {
   font-size: 118px;
 }
 
-.timeline-frame {
+.hp-timeline-frame {
   position: absolute;
   top: 0px;
   left: 638px;
@@ -175,7 +172,7 @@ export default {
   display: flex;
   flex-direction: column;
 }
-.timeline-frame1 {
+.hp-timeline-frame1 {
   position: absolute;
   top: 0px;
   left: 0px;
@@ -184,7 +181,7 @@ export default {
   height: 100vw;
   margin: 12px;
 }
-.timeline-frame2 {
+.hp-timeline-frame2 {
   position: absolute;
   top: 24px;
   left: 24px;
@@ -193,7 +190,7 @@ export default {
   width: 100vw;
   height: 805px;
 }
-.timeline-frame3 {
+.hp-timeline-frame3 {
   position: absolute;
   top: 34px;
   left: 34px;
@@ -205,14 +202,14 @@ export default {
   display: flex;
   align-items: center;
 }
-.timeline-frame1,
-.timeline-frame2,
-.timeline-frame3 {
+.hp-timeline-frame1,
+.hp-timeline-frame2,
+.hp-timeline-frame3 {
   flex: 1;
 }
 
 
-.timeline-content {
+.hp-timeline-content {
   display: flex;
   flex-direction: column;
   align-items: start;
@@ -226,7 +223,7 @@ a {
     text-decoration: none;
 }
 
-.timeline-content h2 {
+.hp-timeline-content h2 {
   display: inline-block;
   justify-content: flex-start;
   text-align: center;
@@ -241,10 +238,9 @@ a {
   padding: 8px 16px 8px 16px;
   box-sizing: border-box; /* Ensures padding and border are included in the width and height */
   width: 300px; /* Example fixed width */
-  height: 70px; /* Example fixed height */
   overflow: hidden;
 }
-.timeline-content h3 {
+.hp-timeline-content h3 {
   justify-content: flex-start;
   text-align: justify;
   padding: 8px 16px 8px 16px;
@@ -258,7 +254,7 @@ a {
 }
 
 
-.picture-frame {
+.hp-picture-frame {
   position: absolute;
   left: 115px;
   right: 0;
@@ -270,7 +266,7 @@ a {
   align-items: center;
   filter: grayscale(50%) brightness(90%) contrast(110%) saturate(10%);
 }
-.picture-frame img {
+.hp-picture-frame img {
   width: 100%;
   height: 100%;
   object-fit: cover; /* Ensures the image covers the frame */

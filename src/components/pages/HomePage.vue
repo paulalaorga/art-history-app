@@ -5,14 +5,14 @@
   </template>
   
   <script>
-  import SmallHomeComponent from "./views/SmallHomeComponent.vue";
-  import DesktopHomeComponent from "./views/DesktopHomeComponent.vue";
+  import HomePageSmall from "./views/HomePageSmall.vue";
+  import HomePageDesktop from "./views/HomePageDesktop.vue";
   
   export default {
     name: "HomeComponent",
     components: {
-      SmallHomeComponent,
-      DesktopHomeComponent,
+      HomePageDesktop,
+      HomePageSmall,
     },
     data() {
       return {
@@ -21,7 +21,7 @@
     },
     computed: {
       currentComponent() {
-        return this.isMobile ? "SmallHomeComponent" : "DesktopHomeComponent";
+        return this.isMobile ? "HomePageSmall" : "HomePageDesktop";
       },
     },
     created() {

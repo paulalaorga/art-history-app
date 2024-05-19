@@ -33,7 +33,7 @@
 import axios from "axios";
 
 export default {
-  name: "SmallHomeComponent",
+  name: "HomePageSmall",
   data() {
     return {
       data: [],
@@ -50,10 +50,8 @@ export default {
       const url = "https://art-database.onrender.com/data.json"; // Endpoint URL
       try {
         const response = await axios.get(url);
-        console.log("Data received:", response.data); // Log the raw data from the server
         this.processData(response.data);
       } catch (error) {
-        console.error("Error fetching data:", error);
         this.error = "Failed to fetch data. See console for details."; // Update the error message for the UI
       } finally {
         this.loading = false; // Ensure loading is always turned off after the fetch operation
@@ -73,7 +71,6 @@ export default {
     },
     selectedEra(eraId) {
       this.$router.push({ name: "EraPage", params: { id: eraId } });
-      console.log("Selected Era:", era);
     },
   },
 };
