@@ -135,7 +135,7 @@ export default {
     text-align: center;
     text-transform: uppercase;
     letter-spacing: 2vw;
-    font-size: calc(3vw + 3vh + 3vmin);;
+    font-size: calc(3vw + 3vh + 3vmin);
   }
   .pp-sm-timeline-frame2 {
     background-color: #322c2c;

@@ -137,9 +137,10 @@ export default {
   .era-sm-art-history {
     font-family: 'Times New Roman', Times, serif;
     background-color: #fffafa;
-    text-align: justify;
-    font-size: 1.2em;
+    text-align: center;
+    letter-spacing: 2vw;
     text-transform: uppercase;
+    font-size: calc(3vw + 3vh + 3vmin);
   }
   .era-sm-timeline-frame2 {
     background-color: #322c2c;
