@@ -17,9 +17,13 @@
                 :key="era.era"
                 :picture="era.picture"
               >
-              <router-link  :to="{ name: 'EraPage', params: { id: era.era }}">
-                <div class="sm-timeline-era">{{ era.era }}</div>
-                <img  class="sm-era-image" :src="era.picture" alt="Picture Frame"/></router-link>
+                <router-link :to="{ name: 'EraPage', params: { id: era.era } }">
+                  <div class="sm-timeline-era">{{ era.era }}</div>
+                  <img
+                    class="sm-era-image"
+                    :src="era.picture"
+                    alt="Picture Frame"
+                /></router-link>
               </v-list-item>
             </v-list>
           </div>
@@ -77,7 +81,6 @@ export default {
 </script>
 
 <style>
-
 .sm-light {
   background-color: #fff;
   display: flex;
@@ -86,7 +89,7 @@ export default {
   width: 100%;
   flex-direction: column;
   margin: 0 auto;
-  font-family: 'Times New Roman', Times, serif;
+  font-family: "Times New Roman", Times, serif;
 }
 .sm-header-frame {
   background-color: #322c2c;
@@ -116,7 +119,7 @@ export default {
   padding: 6px 13px;
 }
 .sm-art-history {
-  font-family: 'Times New Roman', Times, serif;
+  font-family: "Times New Roman", Times, serif;
   background-color: #fffafa;
   text-align: justify;
   font-size: 1.2em;
@@ -150,7 +153,7 @@ export default {
   text-transform: uppercase;
   text-align: center;
   font-size: 35px;
-  font-family: 'Times New Roman', Times, serif;
+  font-family: "Times New Roman", Times, serif;
   font-weight: 700;
   font-size: calc(2vw + 2vh + 2vmin);
   overflow-y: hidden;
@@ -159,21 +162,22 @@ export default {
   margin-top: 8px;
   display: flex;
   flex-direction: column;
-  max-width: 412px;
-  height: 500px;
+  max-width: 400px;
+  height: 700px;
   filter: grayscale(50%) brightness(90%) contrast(110%) saturate(10%);
   overflow: hidden;
+  object-position: center;
+  align-items: center;
 }
 img {
   width: auto;
   height: 100%;
   object-fit: cover;
-  object-position: top;
+  object-position: center;
   position: relative;
   aspect-ratio: 2;
- 
 }
 a {
-    text-decoration: none;
+  text-decoration: none;
 }
 </style>
