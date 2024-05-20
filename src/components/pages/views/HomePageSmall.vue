@@ -162,7 +162,7 @@ export default {
   margin-top: 8px;
   display: flex;
   flex-direction: column;
-  max-width: 400px;
+  max-width: 412px;
   height: 700px;
   filter: grayscale(50%) brightness(90%) contrast(110%) saturate(10%);
   overflow: hidden;

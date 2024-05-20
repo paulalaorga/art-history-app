@@ -3,7 +3,7 @@
     <div class="era-sm-header-frame">
       <div class="era-sm-header-frame2">
         <div class="era-sm-header-frame3">
-          <div v-if="foundEra" class="era-sm-art-history">
+          <div v-if="foundEra" class="era-sm-art-history" @click="goBack">
             {{ foundEra.era }}
           </div>
         </div>
@@ -39,18 +39,19 @@
 
 <script>
 import { ref, onMounted } from "vue";
+import { useRouter } from "vue-router";
 import axios from "axios";
 
 export default {
   name: "EraPageSmall",
   props: ["id"],
   setup(props) {
+    const router = useRouter();
     const url = "https://art-database.onrender.com/data.json";
     const data = ref(null);
     const loading = ref(false);
     const error = ref(null);
     const foundEra = ref(null);
-    const currentPicture = ref(null);
 
     const fetchData = async () => {
       loading.value = true;
@@ -86,6 +87,9 @@ export default {
         }
       }
     };
+    const goBack = () => {
+      router.back();
+    };
 
     onMounted(fetchData);
 
@@ -94,6 +98,7 @@ export default {
       loading,
       error,
       foundEra,
+      goBack,
     };
   },
 };
