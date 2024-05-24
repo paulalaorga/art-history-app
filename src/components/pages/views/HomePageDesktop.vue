@@ -65,7 +65,7 @@ export default {
   methods: {
     async fetchData() {
       this.loading = true;
-      const url = "http://localhost:3000/data.json"; // Endpoint URL
+      const url = "https://art-database.onrender.com/data.json"; // Endpoint URL
       try {
         const response = await axios.get(url);
         this.processData(response.data);
