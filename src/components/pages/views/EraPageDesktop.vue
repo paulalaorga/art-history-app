@@ -18,42 +18,47 @@
       <div class="epd-container-frame2">
         <div class="epd-container">
           <div class="epd-container-flexbox">
-            <div class="periods-column">
-              <div class="periods-column-flexbox">
-                <div class="periods-title">PERIODS</div>
-                <v-timeline v-if="foundEra" side="start" line-color="white" line-thickness="8px">
+            <div class="epd-periods-column">
+              <div class="epd-periods-column-flexbox">
+                <div class="epd-periods-title">PERIODS</div>
+                <v-timeline v-if="foundEra" side="start" line-color="white" line-thickness="8px" class="timeline-class">
                   <v-timeline-item v-for="period in foundEra.periods" :key="period.period" dot-color="white">
                     <router-link :to="{ name: 'PeriodPage', params: { id: period.period } }">
-                      <div class="timeline-content">
+                      <div class="epd-timeline-content">
                         <h2>{{ period.period }}</h2>
                       </div>
                     </router-link>
                     <template v-slot:opposite>
-                      <div class="timeline-content">
+                      <div class="epd-timeline-content">
                         <h3>{{ period.years }}</h3>
                       </div>
                     </template>
                   </v-timeline-item>
                 </v-timeline>
-              </div>
-              <div v-if="foundEra" class="picture-frame">
+                <div v-if="foundEra" class="epd-picture-frame">
                 <img :src="foundEra.picture" alt="Picture Frame" />
+              </div>
               </div>
             </div>
             <div class="info-column">
   <div class="info-column-flexbox">
     <div class="highlights-title">HIGHLIGHTS OF THIS ERA</div>
-    <div v-if="foundEra && foundEra.highlights" class="highlights-content-flexbox">
+    <div v-if="foundEra && foundEra.highlights" class="highlights-content">
+    <div class="highlights-content-flexbox">
+
       <div class="column-5">
       <img :src="foundEra.highlights.image" alt="Highlighted Art" class="highlight-img">
       </div>
       <div class="column-6">
-        <div class="div-15">
+      <div class="div-15">
       <div class="highlight-text">{{ foundEra.highlights.text1 }}</div>
       <div class="highlight-text">{{ foundEra.highlights.text2 }}</div>
-      <div class="highlight-text">{{ foundEra.highlights.text3 }}</div>
+    </div>
     </div>
   </div>
+      <div class="div-18">
+      <div class="highlight-text">{{ foundEra.highlights.text3 }}</div>
+    </div>
  
     </div>
   </div>
@@ -77,7 +82,7 @@
     props: ["id"],
     setup(props) {
       const router = useRouter();
-      const url = "https://art-database.onrender.com/data.json";
+      const url = "http://localhost:3000/data.json";
       const data = ref(null);
       const loading = ref(false);
       const error = ref(null);
@@ -310,37 +315,40 @@
     }
   }
 
-  .periods-column {
+  .epd-periods-column {
     display: flex;
     flex-direction: column;
-    line-height: normal;
-    width: 41%;
+    width: 45%;
     margin-left: 0px;
   }
 
   @media (max-width: 991px) {
-    .periods-column {
+    .epd-periods-column {
       width: 100%;
     }
   }
 
-  .periods-column-flexbox {
+  .epd-periods-column-flexbox {
+    align-items: center;
     display: flex;
     flex-grow: 1;
     flex-direction: column;
     color: #322c2c;
     font-weight: 700;
     margin-right: 50px;
+    width: 100%; /* Adjust based on your layout needs */
+  display: flex;
+  flex-direction: column;
   }
 
   @media (max-width: 991px) {
-    .periods-column-flexbox {
+    .epd-periods-column-flexbox {
       margin-top: 40px;
       white-space: initial;
     }
   }
 
-  .periods-title {
+  .epd-periods-title {
     font-family: "Times New Roman", Times, serif;
     border-color: rgba(50, 44, 44, 1);
     border-style: solid;
@@ -357,13 +365,26 @@
   }
 
   @media (max-width: 991px) {
-    .periods-title {
+    .epd-periods-title {
       white-space: initial;
       padding: 0 20px;
     }
   }
 
-  .timeline-content h2 {
+  .epd-timeline-class {
+    margin-top: 20px;
+    height: auto;
+    align-items: start;
+    width: 100%;
+    display: flex;
+    align-items: center; /* Centers the content vertically */
+  justify-content: start; /* Aligns content to the start */
+  width: 100%; /* Ensures the container takes full width of its parent */
+    
+  }
+
+
+  .epd-timeline-content h2 {
     text-align: flex-start;
     text-transform: uppercase;
     font-family: "Times New Roman", Times, serif;
@@ -374,7 +395,7 @@
 
   }
 
-  .timeline-content h3 {
+  .epd-timeline-content h3 {
     justify-content: flex-start;
     text-align: justify;
     padding: 8px 16px 8px 16px;
@@ -387,21 +408,21 @@
     white-space: nowrap;
   }
 
-  .picture-frame {
-    bottom: 24px;
-    height: 300px;
-    border: 8px solid #322c2c;
-    align-items: center;
-    justify-self: center;
-    filter: grayscale(50%) brightness(90%) contrast(110%) saturate(10%);
-  }
-
-  .picture-frame img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: top;
-  }
+  .epd-picture-frame {
+  position: relative;
+  margin-top: 25px;
+  display: flex;
+  border: 8px solid #322c2c;
+  align-items: center;
+  filter: grayscale(50%) brightness(90%) contrast(110%) saturate(10%);
+}
+.epd-picture-frame img {
+  object-fit: cover; /* Ensures the image covers the frame */
+  object-position: top;
+  width: 100%; /* Makes the image take full width of its container */
+  height: 400px; /* Keeps the image height proportional */
+   
+}
 
 
   .info-column {
@@ -440,6 +461,8 @@
     color: #000;
     letter-spacing: 9.2px;
     font: italic 900 23px/118% "Times New Roman", Times, serif;
+    padding-bottom: 8px;
+    white-space: nowrap;
   }
 
   @media (max-width: 991px) {
@@ -449,7 +472,7 @@
   }
 
   .highlights-content {
-    margin-top: 51px;
+    margin-top: 10px;
   }
 
   @media (max-width: 991px) {
@@ -487,8 +510,7 @@
   }
 
   .highlight-img {
-    aspect-ratio: 0.72;
-    object-fit: auto;
+    object-fit: contain;
     object-position: center;
     width: 152px;
     flex-grow: 1;
