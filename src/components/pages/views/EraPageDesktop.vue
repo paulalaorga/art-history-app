@@ -94,8 +94,7 @@ export default {
   props: ["id"],
   setup(props) {
     const router = useRouter();
-    const url = "http://localhost:3000/data.json";
-    const data = ref(null);
+    const url = "https://art-database.onrender.com/data.json";    const data = ref(null);
     const loading = ref(false);
     const error = ref(null);
     const foundEra = ref(null);
