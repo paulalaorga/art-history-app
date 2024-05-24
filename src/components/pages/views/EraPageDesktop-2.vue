@@ -25,8 +25,6 @@
             :key="period.period"
             dot-color="white"
             :years="period.years"
-            @mouseover="showPicture(period.picture)"
-            @mouseleave="hidePicture"
           >
             <router-link
               :to="{ name: 'PeriodPage', params: { id: period.period } }"
@@ -49,9 +47,6 @@
           </v-timeline-item>
         </v-timeline>
       </div>
-    </div>
-    <div class="picture-frame" v-if="currentPicture">
-      <img :src="currentPicture" alt="Picture Frame" />
     </div>
   </div>
 </template>
@@ -97,6 +92,7 @@ export default {
         if (era) {
           foundEra.value = {
             era: era.Era,
+            picture: era.Picture,
             periods: Object.values(era.Periods).map((period) => ({
               period: period.Period,
               years: period.Years,
@@ -114,9 +110,6 @@ export default {
     const showPicture = (pictureUrl) => {
       currentPicture.value = pictureUrl;
     };
-    const hidePicture = () => {
-      currentPicture.value = null;
-    };
     const goBack = () => {
       router.back();
     };
@@ -130,7 +123,6 @@ export default {
       foundEra,
       currentPicture,
       showPicture,
-      hidePicture,
       goBack,
     };
   },
@@ -296,7 +288,7 @@ a {
   padding: 8px 16px 8px 16px;
 }
 
-.picture-frame {
+/* .picture-frame {
   position: absolute;
   left: 115px;
   right: 0;
@@ -311,8 +303,7 @@ a {
 .picture-frame img {
   width: 100%;
   height: 100%;
-  object-fit: cover; /* Ensures the image covers the frame */
+  object-fit: cover; 
   object-position: top;
-  /* Adjust the values to achieve the desired effect */
-}
+} */
 </style>
