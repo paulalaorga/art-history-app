@@ -64,11 +64,11 @@
                     <div class="column-6">
                       <div class="div-15">
                         <div class="highlight-text">{{ foundEra.highlights.text1 }}</div>
-                        <div class="highlight-text">{{ foundEra.highlights.text2 }}</div>
                       </div>
                     </div>
                   </div>
                   <div class="div-18">
+                    <div class="highlight-text">{{ foundEra.highlights.text2 }}</div>
                     <div class="highlight-text">{{ foundEra.highlights.text3 }}</div>
                   </div>
 
@@ -432,21 +432,19 @@ export default {
 
 .epd-picture-frame {
   position: relative;
-  background: white;
   margin-top: 25px;
   display: flex;
-  border: 8px solid #322c2c;
   align-items: center;
   filter: grayscale(50%) brightness(90%) contrast(110%) saturate(10%);
 }
 
 .epd-picture-frame img {
-  object-fit: scale-down;
+  object-fit: contain;
   /* Ensures the image covers the frame */
-  object-position: top;
+  object-position: center;
   width: 100%;
   /* Makes the image take full width of its container */
-  height: 400px;
+  min-height: 400px;
   /* Keeps the image height proportional */
 
 }
