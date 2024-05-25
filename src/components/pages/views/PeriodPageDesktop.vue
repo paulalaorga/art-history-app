@@ -34,12 +34,9 @@
                         <div class="ppd-work-list-work">
                         <h2>{{ work.name }}</h2>
                         </div>
-<<<<<<< HEAD
                         <div v-if="work.author && work.author.toLowerCase() !== 'unknown'" class="ppd-work-list-author">
                         <h3>{{ work.author }}</h3>
                         </div>
-=======
->>>>>>> 40517ea1a8f859daf2d24bd7b01eaa83611cf703
                         <div class="ppd-work-list-year">
                         <h3>{{ work.date }}</h3>
                         </div>
@@ -432,14 +429,11 @@ export default {
     letter-spacing: -3.2px;
     justify-content: space-between;
   }
-<<<<<<< HEAD
   .ppd-work-list-author {
     font-family: "Times New Roman", Times, serif;
     margin: auto 0;
     text-align: left;
   }
-=======
->>>>>>> 40517ea1a8f859daf2d24bd7b01eaa83611cf703
   .ppd-work-list-year {
     font-family: "Times New Roman", Times, serif;
     margin: auto 0;
