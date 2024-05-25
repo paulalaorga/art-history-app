@@ -34,12 +34,9 @@
                         <div class="ppd-work-list-work">
                         <h2>{{ work.name }}</h2>
                         </div>
-<<<<<<< HEAD
                         <div v-if="work.author && work.author.toLowerCase() !== 'unknown'" class="ppd-work-list-author">
                         <h3>{{ work.author }}</h3>
                         </div>
-=======
->>>>>>> 40517ea1a8f859daf2d24bd7b01eaa83611cf703
                         <div class="ppd-work-list-year">
                         <h3>{{ work.date }}</h3>
                         </div>
