@@ -146,8 +146,7 @@ export default {
 .sm-timeline-era {
   margin-top: 8px;
   margin-bottom: 8px;
-  border-style: solid;
-  background-color: #fffafa;
+  border: 8px solid #322c2c;
   color: #322c2c;
   padding: 8px;
   text-transform: uppercase;
@@ -160,22 +159,21 @@ export default {
 }
 .sm-era-image {
   margin-top: 8px;
+  border: 8px solid #322c2c;
   display: flex;
   flex-direction: column;
   max-width: 412px;
-  height: 700px;
+  max-height: 250px;
   filter: grayscale(50%) brightness(90%) contrast(110%) saturate(10%);
   overflow: hidden;
-  object-position: center;
-  align-items: center;
+  object-position: top;
+  align-items: top;
 }
 img {
   width: auto;
-  height: 100%;
-  object-fit: cover;
-  object-position: center;
+  height: auto;
+  object-fit: scale-down;
   position: relative;
-  aspect-ratio: 2;
 }
 a {
   text-decoration: none;

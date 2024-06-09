@@ -120,7 +120,6 @@ export default {
   display: flex;
   width: 100%;
   flex-direction: column;
-  box-height: 58px;
   color: #322c2c;
   font-weight: 700;
   justify-content: center;
@@ -175,7 +174,7 @@ export default {
 .era-sm-timeline-period {
   margin-top: 8px;
   margin-bottom: 8px;
-  border-style: solid;
+  border: solid 8px #322c2c;
   background-color: #fffafa;
   color: #322c2c;
   padding: 8px;
@@ -192,22 +191,23 @@ export default {
   display: flex;
   flex-direction: column;
   max-width: 400px;
-  height: 500px;
+  max-height: 250px;
   filter: grayscale(50%) brightness(90%) contrast(110%) saturate(10%);
   overflow: hidden;
-  object-position: top;
+  object-position: center;
   align-items: center;
-  object-fit: cover;
-  aspect-ratio: 1/1;
+  object-fit: contain;
+  border: solid 8px #322c2c;
 }
 img {
   width: auto;
-  height: 120%;
+  height: auto;
   object-position: center;
   position: relative;
-  aspect-ratio: 2;
 }
 a {
   text-decoration: none;
+  text-align: -webkit-center;
+
 }
 </style>
