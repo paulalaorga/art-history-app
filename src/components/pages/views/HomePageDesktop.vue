@@ -98,6 +98,16 @@ export default {
 </script>
 
 <style scoped>
+/* global.css */
+html {
+  box-sizing: border-box;
+}
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
 .hp-desktop-light {
   width: 100%;
   position: relative;
@@ -166,7 +176,7 @@ export default {
   position: absolute;
   top: 0px;
   left: 638px;
-  width: 100vw;
+  width: 85%;
   height: 832px;
   justify-content: space-around;
   display: flex;
@@ -177,8 +187,8 @@ export default {
   top: 0px;
   left: 0px;
   background-color: #322c2c;
-  width: 100vw;
-  height: 100vw;
+  width: 85%;
+  height: 100%;
   margin: 12px;
 }
 .hp-timeline-frame2 {
@@ -187,7 +197,7 @@ export default {
   left: 24px;
   right: 24px;
   background-color: #fffafa;
-  width: 100vw;
+  width: 85%;
   height: 805px;
 }
 .hp-timeline-frame3 {
@@ -196,16 +206,21 @@ export default {
   left: 34px;
   right: 34px;
   background-color: #322c2c;
-  width: 52vw;
+  width: 85%;
   height: 782px;
   font-size: 40px;
-  display: flex;
+  display: table;
   align-items: center;
 }
-.hp-timeline-frame1,
-.hp-timeline-frame2,
-.hp-timeline-frame3 {
-  flex: 1;
+.hp-timeline-content {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  justify-content: space-between;
+  padding: 8px 16px 8px 16px;
+  right: 50px;
+  margin-right: 34px;
+  text-decoration: none;
 }
 
 
