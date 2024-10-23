@@ -1,17 +1,20 @@
 import { createApp } from "vue";
 import App from "./App.vue";
-import router from "./router/index.js"; // Ensure you have an index.js in your router directory
+import router from "./router/index.js"; // Asegúrate de que tienes un index.js en tu carpeta de router
+
+// Importa los estilos globales
+import "./global.css"; // Asegúrate de que la ruta es correcta
 
 // Vuetify
-import "vuetify/styles"; // Ensure you have installed Vuetify properly
+import "vuetify/styles"; // Asegúrate de que has instalado Vuetify correctamente
 import { createVuetify } from "vuetify";
 import * as components from "vuetify/components";
 import * as directives from "vuetify/directives";
 
-// Create Vuetify instance
+// Crea la instancia de Vuetify
 const vuetify = createVuetify({ components, directives });
 
-// Create and mount the Vue application
+// Crea y monta la aplicación Vue
 const app = createApp(App);
 app.use(vuetify);
 app.use(router);

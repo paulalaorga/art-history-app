@@ -321,17 +321,17 @@ export default {
   align-items: center;
   justify-content: center;
   width: 100%;
-  height: 100%;
-  overflow: visible;
-  z-index: 1;
+  max-height: 100%;
   flex-grow: 1;
+  overflow: hidden;
+  height: 350px; 
 }
 .ppd-img {
-  object-fit: cover;
-  object-position: top;
-  max-height: 100%;
-  height: auto;
+  object-fit: contain;
+  object-position: center;
+  height: 100%;
   width: 100%;
+  z-index: 1;
 }
 
 @media (max-width: 991px) {

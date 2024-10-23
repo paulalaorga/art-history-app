@@ -443,6 +443,7 @@ export default {
   /* Ensures the image covers the frame */
   object-position: center;
   width: 100%;
+  height: 100%;
   /* Makes the image take full width of its container */
   min-height: 400px;
   /* Keeps the image height proportional */
@@ -470,6 +471,7 @@ export default {
   flex-direction: column;
   align-self: stretch;
   width: 100%;
+  height: 100%;
   margin: auto 0;
   padding: 59px 42px;
 }

@@ -4,7 +4,7 @@
     </div>
   </template>
   
-  <script>
+<script>
   import HomePageSmall from "./views/HomePageSmall.vue";
   import HomePageDesktop from "./views/HomePageDesktop.vue";
   
@@ -37,8 +37,16 @@
       },
     },
   };
-  </script>
+</script>
 
-  <style>
+<style>
+html {
+  box-sizing: border-box;
+}
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
 
 </style>
