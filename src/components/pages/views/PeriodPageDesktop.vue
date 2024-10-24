@@ -16,23 +16,46 @@
                   class="ppd-container-content-flexbox-container-column-flexbox"
                 >
                   <div
-                    class="ppd-container-content-flexbox-container-column-flexbox-title"
-                  >
-                    HIGHLIGHTS
-                  </div>
-                  <div
                     v-if="currentPicture"
                     class="ppd-container-content-flexbox-container-column-img"
                   >
                     <img
                       class="ppd-img"
-                      :src="currentPicture"
+                      :src="currentPicture.image"
                       alt="Picture Frame"
                     />
+                    <div
+                      v-if="
+                        currentPicture.author &&
+                        currentPicture.author.toLowerCase() !== 'unknown'"
+                      class="ppd-work-list-author"
+                    >
+                      <h3>{{ currentPicture.author }}</h3>
+                    </div>
                   </div>
-                  <!--    <div class="div-12"></div>
-
-                  <div class="div-13"></div> -->
+                  <div
+                    v-if="showHighlights && periodData && periodData.highlights"
+                    class="period-highlights-content"
+                  >
+                      <div
+                        class="ppd-container-content-flexbox-container-column-flexbox-title"
+                      >
+                        HIGHLIGHTS
+                      </div>
+                        <div class="period-div-15">
+                          <div class="period-highlight-text">
+                            {{ periodData.highlights.text1 }}
+                          </div>
+                        </div>
+                    <div class="period-div-18">
+                      <div class="period-highlight-text">
+                        {{ periodData.highlights.text2 }}
+                      </div>
+                      <div class="period-highlight-text">
+                        {{ periodData.highlights.text3 }}
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
               <div class="ppd-container-content-flexbox-container-column-2">
@@ -49,15 +72,6 @@
                       <div class="ppd-work-list-item-container">
                         <div class="ppd-work-list-work">
                           <h2>{{ work.name }}</h2>
-                        </div>
-                        <div
-                          v-if="
-                            work.author &&
-                            work.author.toLowerCase() !== 'unknown'
-                          "
-                          class="ppd-work-list-author"
-                        >
-                          <h3>{{ work.author }}</h3>
                         </div>
                         <div class="ppd-work-list-year">
                           <h3>{{ work.date }}</h3>
@@ -91,13 +105,13 @@ export default {
     const error = ref(null);
     const periodData = ref(null);
     const currentPicture = ref(null);
+    const showHighlights = ref(true);
 
     const fetchData = async () => {
       loading.value = true;
       try {
         const response = await axios.get(url);
         data.value = response.data;
-        console.log("Data received:", data.value);
         processData();
       } catch (err) {
         error.value = "Failed to fetch data. See console for details.";
@@ -108,7 +122,6 @@ export default {
     };
 
     const processData = () => {
-      console.log("Processing data", data.value);
       console.log("Period ID:", props.id);
       if (data.value && data.value.TimeLine) {
         const eras = Object.values(data.value.TimeLine);
@@ -119,6 +132,12 @@ export default {
           if (period) {
             periodData.value = {
               period: period.Period,
+              highlights: {
+                text1: period.Highlights["1"] || "",
+                text2: period.Highlights["2"] || "",
+                text3: period.Highlights["3"] || "",
+                image: period.Highlights["4"] || "", // Assuming '4' is always an image URL
+              },
               works: period.Works.map((work) => ({
                 name: work.Name,
                 author: work.Author,
@@ -127,21 +146,25 @@ export default {
                 id: work.id,
               })),
             };
-            console.log("Found Period:", periodData.value);
-            return;
           }
         }
-        console.log("Period not found");
       } else {
         console.log("Invalid data format:", data.value);
       }
     };
+
     const showPicture = (work) => {
-      currentPicture.value = work.image;
+      currentPicture.value = {
+        id: work.id,
+        image: work.image,
+        author: work.author,
+      };
+      showHighlights.value = false;
     };
 
     const hidePicture = () => {
       currentPicture.value = null;
+      showHighlights.value = true;
     };
 
     const goBack = () => {
@@ -163,6 +186,7 @@ export default {
       showPicture,
       hidePicture,
       currentPicture,
+      showHighlights,
     };
   },
 };
@@ -319,19 +343,35 @@ export default {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   width: 100%;
-  max-height: 100%;
+  max-height: 400px;
   flex-grow: 1;
-  overflow: hidden;
-  height: 350px; 
+  overflow: visible;
 }
+
+.img {
+  aspect-ratio: 1.05;
+  object-fit: auto;
+  object-position: center;
+  width: 66px;
+}
+
 .ppd-img {
   object-fit: contain;
-  object-position: center;
+  object-position: top;
   height: 100%;
   width: 100%;
-  z-index: 1;
+  max-height: 350px;
+}
+
+.ppd-work-list-author {
+  font-family: "Times New Roman", Times, serif;
+  text-align: left;
+  margin: 10px;
+  z-index: 2;
+  overflow: visible;
+  position: relative;
 }
 
 @media (max-width: 991px) {
@@ -348,7 +388,8 @@ export default {
   color: #000;
   font-weight: 400;
   width: 100%;
-  padding: 55px 61px 55px 28px;
+  padding: 35px;
+  max-height: 500px;
 }
 @media (max-width: 991px) {
   .ppd-container-content-flexbox-container-column-flexbox {
@@ -365,6 +406,7 @@ export default {
   letter-spacing: 9.2px;
   align-self: start;
   margin-left: 22px;
+  flex: 1 1 100%;
 }
 @media (max-width: 991px) {
   .ppd-container-content-flexbox-container-column-2-flexbox-title {
@@ -465,22 +507,12 @@ export default {
   letter-spacing: -3.2px;
   justify-content: space-between;
 }
-.ppd-work-list-author {
-  font-family: "Times New Roman", Times, serif;
-  margin: auto 0;
-  text-align: left;
-}
 .ppd-work-list-year {
   font-family: "Times New Roman", Times, serif;
   margin: auto 0;
   text-align: right;
 }
-.img {
-  aspect-ratio: 1.05;
-  object-fit: auto;
-  object-position: center;
-  width: 66px;
-}
+
 .div-19 {
   border-color: rgba(50, 44, 44, 1);
   border-style: solid;
@@ -559,6 +591,120 @@ export default {
     max-width: 100%;
     padding-right: 20px;
     white-space: initial;
+  }
+}
+.period-highlights-title {
+  color: #000;
+  letter-spacing: 9.2px;
+  font: italic 900 23px/118% "Times New Roman", Times, serif;
+  padding-bottom: 8px;
+  white-space: nowrap;
+}
+
+@media (max-width: 991px) {
+  .period-highlights-title {
+    max-width: 100%;
+  }
+}
+
+.period-highlights-content {
+  margin-top: 10px;
+}
+
+@media (max-width: 991px) {
+  .period-highlights-content {
+    max-width: 100%;
+    margin-top: 40px;
+  }
+}
+
+@media (max-width: 991px) {
+  .period-highlights-content-flexbox {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0px;
+  }
+}
+
+.period-column-5 {
+  display: flex;
+  flex-direction: column;
+  line-height: normal;
+  width: 27%;
+  margin-left: 0px;
+}
+
+@media (max-width: 991px) {
+  .period-column-5 {
+    width: 100%;
+  }
+}
+
+.period-highlight-img {
+  object-fit: contain;
+  object-position: center;
+  width: 152px;
+  flex-grow: 1;
+}
+
+.period-column-6 {
+  display: flex;
+  flex-direction: column;
+  line-height: normal;
+  width: 73%;
+  margin-left: 20px;
+}
+
+@media (max-width: 991px) {
+  .period-column-6 {
+    width: 100%;
+  }
+}
+
+.period-div-15 {
+  display: flex;
+  margin-top: 9px;
+  flex-direction: column;
+  font-size: 23px;
+  color: #000;
+  font-weight: 400;
+  line-height: 27px;
+}
+
+.period-highlight-text {
+  font-family: "Times New Roman", Times, serif;
+  align-self: flex-start;
+  margin: 56px 37px 0 0;
+}
+
+@media (max-width: 991px) {
+  .period-highlight-text {
+    margin: 40px 10px 0 0;
+  }
+}
+
+.period-div-18 {
+  color: #000;
+  letter-spacing: 0.92px;
+  font: 400 23px/27px Roboto Serif, sans-serif;
+}
+
+@media (max-width: 991px) {
+  .period-div-18 {
+    max-width: 100%;
+  }
+}
+
+.period-div-19 {
+  color: #000;
+  letter-spacing: 0.92px;
+  margin-top: 33px;
+  font: 400 23px/27px Roboto Serif, sans-serif;
+}
+
+@media (max-width: 991px) {
+  .period-div-19 {
+    max-width: 100%;
   }
 }
 </style>
