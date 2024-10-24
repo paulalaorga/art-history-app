@@ -112,7 +112,7 @@ html {
   width: 100%;
   position: relative;
   background-color: #fff;
-  height: 832px;
+  height: 950px;
   overflow: hidden;
   text-align: left;
   font-size: 40px;
@@ -177,7 +177,7 @@ html {
   top: 0px;
   left: 638px;
   width: 85%;
-  height: 832px;
+  height: 870px;
   justify-content: space-around;
   display: flex;
   flex-direction: column;
@@ -188,7 +188,7 @@ html {
   left: 0px;
   background-color: #322c2c;
   width: 85%;
-  height: 100%;
+  height: 850px;
   margin: 12px;
 }
 .hp-timeline-frame2 {
@@ -198,7 +198,7 @@ html {
   right: 24px;
   background-color: #fffafa;
   width: 85%;
-  height: 805px;
+  height: 820px;
 }
 .hp-timeline-frame3 {
   position: absolute;
@@ -207,7 +207,7 @@ html {
   right: 34px;
   background-color: #322c2c;
   width: 85%;
-  height: 782px;
+  height: 800px;
   font-size: 40px;
   display: table;
   align-items: center;
@@ -217,21 +217,9 @@ html {
   flex-direction: column;
   align-items: start;
   justify-content: space-between;
-  padding: 8px 16px 8px 16px;
-  right: 50px;
-  margin-right: 34px;
   text-decoration: none;
-}
+  contain: content;
 
-
-.hp-timeline-content {
-  display: flex;
-  flex-direction: column;
-  align-items: start;
-  justify-content: space-between;
-  padding: 8px 16px 8px 16px;
-  right: 50px;
-  text-decoration: none;
 }
 
 a {
@@ -246,13 +234,13 @@ a {
   text-transform: uppercase;
   font-family: 'Times New Roman', Times, serif;
   font-weight: 700;
-  font-size: xx-large;
+  font-size: x-large;
   border-width: 8px;
   background-color: #fffafa;
   color: #322c2c;
   padding: 8px 16px 8px 16px;
   box-sizing: border-box; /* Ensures padding and border are included in the width and height */
-  width: 300px; /* Example fixed width */
+  width: 250px; /* Example fixed width */
   overflow: hidden;
 }
 .hp-timeline-content h3 {
@@ -261,8 +249,8 @@ a {
   padding: 8px 16px 8px 16px;
   text-transform: capitalize;
   font-family: 'Times New Roman', Times, serif;
-  font-weight: 500;
-  font-size: x-large;
+  font-weight: 400;
+  font-size: large;
   border-width: 8px;
   color: #fffafa;
   padding: 8px 16px 8px 16px;
@@ -288,4 +276,11 @@ a {
   object-position: top;
   /* Adjust the values to achieve the desired effect */
 }
+
+.v-timeline {
+    width: 70%; /* Ajusta este valor para hacer el timeline más estrecho */
+    height: inherit;
+    contain: content;
+}
+
 </style>
