@@ -40,7 +40,12 @@
                       <div
                         class="ppd-container-content-flexbox-container-column-flexbox-title"
                       >
-                        HIGHLIGHTS
+                        HIGHLIGHTS OF THIS PERIOD
+                        <img
+                          class="period-highlight-img"
+                          :src="periodData.highlights.image"
+                          alt="Highlight Image"
+                        />
                       </div>
                         <div class="period-div-15">
                           <div class="period-highlight-text">
@@ -641,10 +646,12 @@ export default {
 }
 
 .period-highlight-img {
-  object-fit: contain;
-  object-position: center;
-  width: 152px;
-  flex-grow: 1;
+    object-fit: contain;
+    max-width: 100px;
+    max-height: 100px;
+    flex-grow: 1;
+    position: absolute;
+    top: 35%;
 }
 
 .period-column-6 {
