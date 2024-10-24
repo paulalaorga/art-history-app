@@ -446,6 +446,7 @@ export default {
   height: 100%;
   /* Makes the image take full width of its container */
   min-height: 400px;
+  max-height: 400px;
   /* Keeps the image height proportional */
 
 }

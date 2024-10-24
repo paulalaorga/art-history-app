@@ -263,7 +263,7 @@ export default {
   border-style: solid;
   border-width: 8px;
   background-color: #fffafa;
-  letter-spacing: 12.8px;
+  letter-spacing: 6px;
   max-width: 50%;
   white-space: nowrap;
   padding: 20px;
